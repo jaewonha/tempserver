@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>Lotte Make Move Event</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+ 	<script src="js/script.js"></script>
+  </head>
+
+  <body>
+	<h1> Lotte 40th annivary </h1>
+	<hr>
+
+	<h2> Step Count: <span id="stepCount"> ... </span></h2>
+	<hr>
+
+	<!-- pic section -->
+		<div> Event Explain Pics #1 </div>
+		<div> Event Explain Pics #2 </div>
+		<div> Event Explain Pics #3 </div>
+		<div> Event Explain Pics #4 </div>
+		<hr>
+
+		<a href="toapp:::AppFunction:::Pedometer"> <h3>Apply Event</h3> </a>
+	<hr>
+
+	<h3> My Event History </h3>
+		<div id="history"></div>
+	<hr>
+
+	<h3> My Coupons </h3>
+		<div id="my-coupons"></div>
+	<hr>
+
+	<h3 class="footer"> end </h3>
+  </body>
+
+  <script>
+	startStepCounter();
+	API('/my-received-coupons', 'post', {
+		"mbrNo":"m01",
+		"entNo":"ENT00000000000001182"
+	}, function(res) {
+		document.getElemetById('my-coupons').innerText=res;
+	});	 	
+  </script>
+
+</html>
