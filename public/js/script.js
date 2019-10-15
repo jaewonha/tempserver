@@ -24,7 +24,7 @@ function getStepCount() {
 }
 
 function API(endpoint, method, param, callback) {
-	var BASE_URL='http://localhost:8080/pedometer';
+	var BASE_URL='http://10.12.21.58:8080/pedometer';
 
 	fetch(BASE_URL+endpoint, {
 	  method: method,

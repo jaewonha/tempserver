@@ -2,9 +2,29 @@ body{
 	background-color: #FFCC00;
 	color: black;
 	text-align: center;
+	padding-top: 25px;
 }
 
 
 .footer {
 	color: #555555;
+}
+.btn.btn-outline-dark.btn-sm {
+	margin-top: 5px;
+}
+
+.event-button {
+	margin-top: 10px;
+	width: 150px;
+}
+
+img {
+	width: 100%;
+}
+
+h4 {
+	//text-align: left;
+	//margin-left: 20px;
+	//font-weight: 400;
+	//font-size: 1.25rem;
 }
