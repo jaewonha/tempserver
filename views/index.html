@@ -7,20 +7,30 @@
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	
 	<!-- Modal Loading -->
-	<link rel="stylesheet" href="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/css/modal-loading.css">
+<!--
+ 	<link rel="stylesheet" href="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/css/modal-loading.css">
 	<link rel="stylesheet" href="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/css/modal-loading-animate.css">
 	<script type="text/javascript" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/js/modal-loading.js"></script>
-
+ -->
 	<!-- event -->
 	<link rel="stylesheet" href="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/css/style.css">
 	<script type="text/javascript" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/js/util.js"></script>
+	<script type="text/javascript" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/js/ui-util.js"></script>
+	<script type="text/javascript" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/js/api.js"></script>
 	<script type="text/javascript" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/js/event.js"></script>
+
+	<script>
+	function scrollToCoupon() {
+	    document.getElementById('couponStatusAndRequest').scrollIntoView();    
+	}
+	</script>	
   </head>
 
   
   <body>
-	<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/main-top.jpg"><br>
+	<img id="topThumbnail" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/main-top.jpg"><br>
 	<span id="curDate"></span><br>
+	<span id="agent"></span><br>
 	<a href="http://10.12.21.58:8080/test/pedometer-event?addDay=-2" />-2Day</a>
 	<a href="http://10.12.21.58:8080/test/pedometer-event?addDay=-1" />-1Day</a>
 	<a href="http://10.12.21.58:8080/test/pedometer-event" />Today</a>
@@ -53,8 +63,8 @@
 		<br>
 	</div>
 
-	
-	<div>
+		
+	<div id="eventImgs">
 		<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/event1.jpg"><br>
 		<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/event2.jpg"><br>
 		<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/event3.jpg"><br> 
