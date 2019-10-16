@@ -27,18 +27,38 @@ function loadUserInfo () {
 }
 
 function renderMobileOrPC() {
+	if (isNativeMobile()) {
+		$("#stepper").hide();
+	} else {
+		$("#stepper").show();
+	}
+
 	if(isMobile()) {
 		gMainBtn = '#btnApply-mobile';
 		$('#btnApply-pc').hide();
 		$('#agent').text('mobile');
+
+		$("#header-top").removeClass("header-top-pc");
+		$("#header-top").addClass("header-top-mobile");
+		$("#main-intro").removeClass("main-intro-pc");
+		$("#main-intro").addClass("main-intro-mobile");
+
 	} else {
+		if (!getUrlParameter('admin')) {
+			$('#topThumbnail').hide();
+			$("#stepper").hide();
+		}
+		//pc test admin
 		gMainBtn = '#btnApply-pc';
 		$('#btnApply-mobile').hide(); 
-
-		$('#topThumbnail').hide();
 		$('#eventImgs').hide();
 		$('#couponThumb').hide();
 		$('#agent').text('PC');
+
+		$("#header-top").removeClass("header-top-mobile");
+		$("#header-top").addClass("header-top-pc");
+		$("#main-intro").removeClass("main-intro-mobile");
+		$("#main-intro").addClass("main-intro-pc");
 	}
 }
 $(document).ready(function(){

@@ -30,7 +30,7 @@ function applyEvent() {
 		"strCd":gStrCd,
 		"startDtm":getToday()
 	}
-	
+
 	API('/pedometer/apply-event', 'post', param, (res) => {
 		//var resStr = JSON.stringify(res); 
 		//document.getElementById('history').innerText=resStr;

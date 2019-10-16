@@ -8,6 +8,9 @@ function refresh() {
 	location.reload();
 }
 
+function isNativeMobile() {
+  return ((typeof webkit) !== "undefined") || ((typeof window.android) !== "undefined");
+}
 
 function isIOS() {
 	return navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)/i)	
@@ -18,7 +21,7 @@ function isAndroid() {
 }
 
 function isMobile() {
-	return navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)	
+	return navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)
 }
 
 function startCountDown(rgstDtm, id) {
@@ -31,8 +34,9 @@ function startCountDown(rgstDtm, id) {
 function _startCountDown(endDate, startDate, id) {
   // Update the count down every 1 second
   var date = startDate;
-  var timer = setInterval(function() {
+  var timer = setInterval(function () {
     var distance = endDate - date;
+    console.log("distance:", distance)
 
     // Time calculations for days, hours, minutes and seconds
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -42,15 +46,111 @@ function _startCountDown(endDate, startDate, id) {
 
     // Output the result in an element with id="demo"
     //$(id).text(days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-	if(seconds<10) seconds = '0' + seconds;
-    $(id).text(hours + ":" + minutes + ":" + seconds + "");
+    if (seconds < 10) seconds = '0' + seconds;
+    // $(id).text(hours + ":" + minutes + ":" + seconds + "");
+
+    var hour10 = Math.floor(hours / 10);
+    var hour1 = hours % 10;
+    var minute10 = Math.floor(minutes / 10);
+    var minute1 = minutes % 10;
+    var second10 = Math.floor(seconds / 10);
+    var second1 = seconds % 10;
+
+    $("#hour10").text(hour10);
+    $("#hour1").text(hour1);
+    $("#minute10").text(minute10);
+    $("#minute1").text(minute1);
+    $("#second10").text(second10);
+    $("#second1").text(second1);
+    // console.log(hours + ":" + minutes + ":" + seconds + "");
+    // console.log("" + hour10 + hour1 + ":" + minute10 + minute1 + ":" + second10 + second1 + "");
 
     // If the count down is over, write some text 
     if (distance < 0) {
       clearInterval(timer);
-    	$(id).text('EXPIRED');
+      // $(id).text('EXPIRED');
+      $("#hour10").text(0);
+      $("#hour1").text(0);
+      $("#minute10").text(0);
+      $("#minute1").text(0);
+      $("#second10").text(0);
+      $("#second1").text(0);
     }
-	date.setSeconds(date.getSeconds() + 1);
+    date.setSeconds(date.getSeconds() + 1);
   }, 1000);
   return timer;
+}
+
+function updateStepsUI(steps) {
+  var tmpSteps = steps;
+  if (tmpSteps >= 100000) {
+    tmpSteps = 99999;
+  }
+  for (var i = 4; i >= 0; i--) {
+    var divider = Math.pow(10, i);
+    var num = Math.floor(tmpSteps / divider);
+    tmpSteps = tmpSteps - divider * num;
+    // console.log(divider, num);
+    var id = "#steps" + divider;
+    $(id).text(num);
+  }
+}
+
+function updateProgress(steps) {
+  var guagePoints = [
+    {
+      steps: 4000,
+      percent: 17.5
+    },
+    {
+      steps: 10000,
+      percent: 35.7
+    },
+    {
+      steps: 15000,
+      percent: 55
+    },
+    {
+      steps: 40000,
+      percent: 92
+    },
+    {
+      steps: 40001,
+      percent: 96.6
+    }
+  ];
+
+  var multiplier = 0;
+  var idx = 0;
+  var foundItem = guagePoints.find(function (item, index) {
+    idx = index;
+    // console.log(steps, item.steps)
+    return steps <= item.steps;
+  });
+  // console.log(foundItem);
+
+  var sizePercent = foundItem.percent;
+  var sizeSteps = foundItem.steps;
+  var previousPointSteps = 0;
+  var previousPointPercent = 0;
+  if (idx > 0) {
+    previousPointSteps = guagePoints[idx - 1].steps;
+    previousPointPercent = guagePoints[idx - 1].percent;
+    sizePercent -= guagePoints[idx - 1].percent;
+    sizeSteps -= guagePoints[idx - 1].steps;
+  }
+
+  var remainSteps = steps - previousPointSteps;
+  var addingPercent = sizePercent * (remainSteps / sizeSteps);
+  var guageProgress = previousPointPercent + addingPercent;
+  // console.log(guageProgress, previousPointPercent, addingPercent)
+  $("#guageProgress").css("width", guageProgress + "%");
+}
+
+// for test
+function scrollToCoupon() {
+  var steps = 39000;
+  updateStepsUI(steps);
+  updateProgress(steps);
+  _startCountDown(new Date("2019-10-01 01:01:05"), new Date("2019-10-01 00:00:00"), "id");
 }

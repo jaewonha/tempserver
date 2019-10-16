@@ -13,22 +13,146 @@
 	<script type="text/javascript" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/js/modal-loading.js"></script>
  -->
 	<!-- event -->
-	<link rel="stylesheet" href="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/css/style.css">
-	<script type="text/javascript" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/js/util.js"></script>
-	<script type="text/javascript" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/js/ui-util.js"></script>
-	<script type="text/javascript" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/js/api.js"></script>
-	<script type="text/javascript" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/js/event.js"></script>
+	  <link rel="stylesheet" href="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/css/style.css">
+	  <script type="text/javascript" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/js/util.js"></script>
+	  <script type="text/javascript" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/js/ui-util.js"></script>
+	  <script type="text/javascript" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/js/api.js"></script>
+	  <script type="text/javascript" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/js/event.js"></script>
 
 	<script>
 	function scrollToCoupon() {
-	    document.getElementById('couponStatusAndRequest').scrollIntoView();    
+	    document.getElementById('couponStatusAndRequest').scrollIntoView();
 	}
-	</script>	
+	</script>
   </head>
 
-  
+
   <body>
-	<img id="topThumbnail" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/main-top.jpg"><br>
+	<div id="header-top" class="header-top-mobile">
+		<img src="/img/header.png">
+	</div>
+	<div id="main-intro" class="main-intro-mobile">
+		<img src="/img/main-intro.png">
+	</div>
+
+	<div id="stepper" class="stepper-mobile">
+		<div class="stepper-attended-mobile">
+			<div style="flex: 1;"> <span id="attendCount">0</span> 회 참여 하셨습니다. </div>
+		</div>
+		<div class="stepper-counter-mobile">
+			<div style="display: flex; flex-direction: row;">
+				<div style="position: relative;">
+					<img src="/img/counter.png" alt="" class="counter-bg-mobile">
+					<div class="counter-number-mobile" id="steps10000">0</div>
+				</div>
+				<div style="position: relative;">
+					<img src="/img/counter.png" alt="" class="counter-bg-mobile">
+					<div class="counter-number-mobile" id="steps1000">0</div>
+				</div>
+				<div style="position: relative;">
+					<img src="/img/counter.png" alt="" class="counter-bg-mobile">
+					<div class="counter-number-mobile" id="steps100">0</div>
+				</div>
+				<div style="position: relative;">
+					<img src="/img/counter.png" alt="" class="counter-bg-mobile">
+					<div class="counter-number-mobile" id="steps10">0</div>
+				</div>
+				<div style="position: relative;">
+					<img src="/img/counter.png" alt="" class="counter-bg-mobile">
+					<div class="counter-number-mobile" id="steps1">0</div>
+				</div>
+			</div>
+		</div>
+		<div class="progress-mobile">
+			<div style="text-align: left;">
+				<img src="/img/progress-header.png" alt="" class="progress-header-mobile">
+			</div>
+			<div style="position: relative;">
+				<img src="/img/progress-body.png" alt="" style="background-color: #ffffff;">
+				<div id="guageProgress" class="guage-progress-mobile"></div>
+			</div>
+		</div>
+
+		<div class="buttons-mobile">
+			<div id="button-one">
+				<div id="button-start" style="padding-top: 5vw;">
+					<a href="toapp:::AppFunction:::Pedometer" id="btnApply-mobile"><button class="btn-lotte btn-start">START</button></a>
+				</div>
+				<div id="button-ing" style="padding-top: 5vw;">
+					<button class="btn-lotte btn-grey">이벤트 진행중</button>
+				</div>
+				<div id="button-done" style="padding-top: 5vw;">
+					<button class="btn-lotte btn-grey">이벤트 종료</button>
+				</div>
+				<div class="get-coupon-wrapper-mobile">
+					<div style="position: absolute; top: 6.1vw; left: -20vw; right: -20vw; background-color: #e82e73; height: 50vw;">
+						<div style="position: absolute; left: 20vw; right: 20vw; bottom: -7vw;">
+							<button class="btn-lotte btn-black" id="btnRequestCoupon" onClick="scrollToCoupon()">쿠폰 받기</button>
+						</div>
+					</div>
+					<div style="position: relative;">
+						<img src="/img/success-header.png" alt="" style="width: 40vw;">
+						<div style="position: absolute; top: 0.2vw; left: 0; right: 0; font-size: 2.4vw; text-align: center; color: #ffffff; font-weight: bold;">&nbsp;&nbsp;4000보 달성!</div>
+					</div>
+					<div style="position: absolute; top: 15vw; left: 0; right: 0;">
+						<div style="color: #ffffff; font-size: 3.5vw; padding-bottom: 1.5vw; position: relative;">
+							쿠폰 수령 가능 시간이
+							<img src="/img/left-time-icon.png" alt="" style="position: absolute; top: 3vw; right: -3vw; width: 6vw;">
+						</div>
+						<div style="border: 0 solid yellow; display: flex; flex-direction: row; justify-content: center; align-items: center;">
+							<div style="position: relative;">
+								<img src="/img/left-time.png" alt="" style="width: 10vw;">
+								<div class="left-time-number" id="hour10">0</div>
+							</div>
+							<div style="margin-left: 1vw; position: relative;">
+								<img src="/img/left-time.png" alt="" style="width: 10vw;">
+								<div class="left-time-number" id="hour1">0</div>
+							</div>
+							<div style="margin-left: 1.5vw;">
+								<img src="/img/left-time-separator.png" alt="" style="width: 1.2vw; height: 7vw;">
+							</div>
+							<div style="margin-left: 1vw; position: relative;">
+								<img src="/img/left-time.png" alt="" style="width: 10vw;">
+								<div class="left-time-number" id="minute10">0</div>
+							</div>
+							<div style="margin-left: 1vw; position: relative;">
+								<img src="/img/left-time.png" alt="" style="width: 10vw;">
+								<div class="left-time-number" id="minute1">0</div>
+							</div>
+							<div style="margin-left: 1.5vw;">
+								<img src="/img/left-time-separator.png" alt="" style="width: 1.2vw; height: 7vw;">
+							</div>
+							<div style="margin-left: 1vw; position: relative;">
+								<img src="/img/left-time.png" alt="" style="width: 10vw;">
+								<div class="left-time-number" id="second10">0</div>
+							</div>
+							<div style="margin-left: 1vw; position: relative;">
+								<img src="/img/left-time.png" alt="" style="width: 10vw;">
+								<div class="left-time-number" id="second1">0</div>
+							</div>
+						</div>
+						<div style="color: #ffffff; font-size: 3.5vw; padding-top: 1vw; ">
+							남았습니다.
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			<div id="button-two">
+				<div style="padding-top: 5vw;">
+					<button class="btn-lotte btn-grey">쿠폰현황확인</button>
+				</div>
+				<div style="padding-top: 5vw;">
+					<button class="btn-lotte btn-blue" id="btnCouponStatus" onClick="scrollToCoupon()">쿠폰현황확인</button>
+				</div>
+			</div>
+
+
+		</div>
+		<div style="background-color: #ffffff; padding-bottom: 30px;"></div>
+	</div>
+
 	<span id="curDate"></span><br>
 	<span id="agent"></span><br>
 	<a href="http://10.12.21.58:8080/test/pedometer-event?addDay=-2" />-2Day</a>
@@ -38,11 +162,10 @@
 	<a href="http://10.12.21.58:8080/test/pedometer-event?addDay=2" />+2Day</a>
 	<hr>
 
-	<div>
-		<div> <span id="attendCount"></span> 회 참여 하셨습니다. </div>
-		<div> <span id="userName"></span> 고객님 걷기 이벤트에 참여하세요! </div>
-		<hr>
-	</div>
+<!--	<div>-->
+<!--		<div> <span id="userName"></span> 고객님 걷기 이벤트에 참여하세요! </div>-->
+<!--		<hr>-->
+<!--	</div>-->
 	
 	<div>
 		<h4> 진행중 이벤트 </h4>
@@ -51,19 +174,16 @@
 			<h5> <span id="guage"></span>% </h5>
 			<h5> <span id="timeCounter">[타이머]</span> </h5>
 		</div>
-		
-		<a href="toapp:::AppFunction:::Pedometer" class="btn btn-primary" id="btnApply-mobile">이벤트 참여하기(Mobile)</a>
+
 		<button class="btn btn-primary event-button" id="btnApply-pc" onClick="applyEvent()">이벤트 참여하기(PC)</button>
 		<br>
-		
-		<button class="btn btn-danger event-button" id="btnRequestCoupon" onClick="scrollToCoupon()">쿠폰 받기</button>
+
 		<br>
-		<button class="btn btn-success event-button" id="btnCouponStatus" onClick="scrollToCoupon()">쿠폰 현황 확인</button>
 		<br>
 		<br>
 	</div>
 
-		
+
 	<div id="eventImgs">
 		<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/event1.jpg"><br>
 		<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/event2.jpg"><br>
@@ -85,7 +205,34 @@
 		<br><br><h4> My Coupons </h4>	<div id="myCoupons"></div>
 	</div>
 	<hr>
-	
+
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+		Open modal
+	</button>
+
+	<div class="modal" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+<!--				<div class="modal-header">-->
+<!--					<h4 class="modal-title">Modal Heading</h4>-->
+<!--					<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--				</div>-->
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div>롯데 4주년 기념 이벤트</div>
+					<div>이벤트 참여 현황</div>
+
+					<div style="padding-top: 20px;">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
 
 	<br>
 	<br>
