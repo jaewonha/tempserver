@@ -27,8 +27,8 @@ function applyEvent() {
 	let param = {
 		"entNo":gEntNo,
 		"mbrNo":gMbrNo,
-		"strId":gStrId,
-		"rgstDtm":getToday()
+		"strCd":gStrCd,
+		"startDtm":getToday()
 	}
 	
 	API('/pedometer/apply-event', 'post', param, (res) => {
@@ -39,8 +39,8 @@ function applyEvent() {
 			alert('[failed]' + res.result)
 		} else {
 			//alert('이벤트에 지원하였습니다');
-			//kickPedometerUpdaet(param.rgstDtm);
-			alert('이벤트에 지원하였습니다:injectIntoApp:param.rgstDtm:' + param.rgstDtm);
+			//kickPedometerUpdaet(param.startDtm);
+			alert('이벤트에 지원하였습니다:injectIntoApp:param.startDtm:' + param.startDtm);
 			if(isIOS())
 			 	webkit.messageHandlers.injectIntoApp.postMessage(param);
 
@@ -58,8 +58,8 @@ function requestCoupon(stpCnt, cpnTyp) {
 	let param = {
 		"entNo":gEntNo,
 		"mbrNo":gMbrNo,
-		"strId":gStrId,
-		"rgstDtm":getToday(),
+		"strCd":gStrCd,
+		"issueDtm":getToday(),
 		"stpCnt":stpCnt,
 		"cpnTyp":cpnTyp
 	}
@@ -100,24 +100,24 @@ function clearMyCoupon() {
 }
 
 function eventStatus() {
-	API('/pedometer/event-status', 'get', {
+	API('/pedometer/admin/event-status', 'get', {
 		"mbrNo":gMbrNo,
 		"entNo":gEntNo
 	}, (res) => {
 		//var resStr = JSON.stringify(res, null, 2); 
 		//$('#couponStatus').text(resStr);
-		displayJsonTable('#eventStatus', ['entNo','rgstDtm','mbrNo', 'stpCnt'], res.result);
+		displayJsonTable('#eventStatus', ['entNo','startDtm','mbrNo', 'stpCnt'], res.result);
 	});	
 }
 
 function couponStatus() {
-	API('/pedometer/coupon-status', 'get', {
+	API('/pedometer/admin/coupon-status', 'get', {
 		"mbrNo":gMbrNo,
 		"entNo":gEntNo
 	}, (res) => {
 		//var resStr = JSON.stringify(res, null, 2); 
 		//$('#couponStatus').text(resStr);
-		displayJsonTable('#couponStatus', ['cpnId','cpnTyp','mbrNo'], res.result);
+		displayJsonTable('#couponStatus', ['cpnNo','cpnTyp','mbrNo'], res.result);
 	});	
 }
 
@@ -126,7 +126,7 @@ function finalizeSteps() {
 	let param = {
 		"entNo":gEntNo,
 		"mbrNo":gMbrNo,
-		"rgstDtm":getToday(),
+		"endDtm":getToday(),
 		"stpCnt": stpCnt,
 	}
 		
@@ -148,13 +148,13 @@ function loadMyInfo() {
 		"mbrNo":gMbrNo,
 		"entNo":gEntNo
 	}, (res) => {
-		displayJsonTable('#myCoupons', ['cpnId', 'cpnTyp', 'rgstDtm', 'mbrNo'], res.issuedCoupons);
+		displayJsonTable('#myCoupons', ['cpnNo', 'cpnTyp', 'issueDtm', 'mbrNo'], res.issuedCoupons);
 	});	 	
 	
 	API('/pedometer/my-event', 'get', {
 		"mbrNo":gMbrNo,
 		"entNo":gEntNo,
-		"rgstDtm":getToday()
+		"startDtm":getToday()
 	}, (res) => {
 		var applicableStatus = res.applicableStatus;
 		var participatingEvent = res.participatingEvent;
@@ -174,7 +174,7 @@ function loadMyInfo() {
 		} else if (applicableStatus==('todayParticipating')) {
 			setMainButton(false, '이벤트가 진행중입니다'); 
 			$("#curEventInfo").show();
-			startCountDown(participatingEvent.rgstDtm, '#timeCounter');
+			startCountDown(participatingEvent.startDtm, '#timeCounter');
 		} else if (applicableStatus==('todayFinishded')) {
 			setMainButton(false, '오늘 이벤트에 참여하셨습니다'); 
 			$("#curEventInfo").hide();
@@ -189,6 +189,6 @@ function loadMyInfo() {
 		$('#attendCount').text(res.myPedometerEvent.length);
 		//var resStr = JSON.stringify(res.myPedometerEvent, null, 2);
 		//document.getElementById('history').innerText = resStr;
-		displayJsonTable('#history', ['rgstDtm', 'mbrNo', 'stpCnt'], res.myPedometerEvent);
+		displayJsonTable('#history', ['startDtm', 'mbrNo', 'stpCnt'], res.myPedometerEvent);
 	});	 	
 }

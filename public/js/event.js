@@ -1,7 +1,7 @@
 //this value will be overrided when native webkit loads real values
 var gMbrNo = "MBR00000000000001512";
 var gEntNo = "ENT00000000000001181";
-var gStrId = "s00";
+var gStrCd = "s00";
 var gMainBtn;
 	
 function setMainButton(enabled, text) {
@@ -23,15 +23,13 @@ function loadUserInfo () {
 	$("#userName").text(gMbrNo);
 	$("#userMbrNo").text(gMbrNo);
 	$("#userEntId").text(gEntNo);
-	$("#userStrId").text(gStrId);
+	$("#userStrCd").text(gStrCd);
 }
 
 function renderMobileOrPC() {
 	if(isMobile()) {
 		gMainBtn = '#btnApply-mobile';
 		$('#btnApply-pc').hide();
-		$('#topThumbnail').show();
-		$('#eventImgs').show();
 		$('#agent').text('mobile');
 	} else {
 		gMainBtn = '#btnApply-pc';
@@ -39,6 +37,7 @@ function renderMobileOrPC() {
 
 		$('#topThumbnail').hide();
 		$('#eventImgs').hide();
+		$('#couponThumb').hide();
 		$('#agent').text('PC');
 	}
 }
