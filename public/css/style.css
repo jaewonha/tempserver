@@ -2,7 +2,7 @@
     font-family: 'Fjalla One';
     font-style: normal;
     font-weight: normal;
-    src: local('Fjalla One'), url('FjallaOne-Regular.woff') format('woff');
+    src: local('Fjalla One'), url('http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/css/FjallaOne-Regular.woff') format('woff');
 }
 
 body {
