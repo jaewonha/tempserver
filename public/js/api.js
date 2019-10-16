@@ -41,8 +41,8 @@ function applyEvent() {
 			//alert('이벤트에 지원하였습니다');
 			//kickPedometerUpdaet(param.rgstDtm);
 			alert('이벤트에 지원하였습니다:injectIntoApp:param.rgstDtm:' + param.rgstDtm);
-			if(webkit!=null)
-			 webkit.messageHandlers.injectIntoApp.postMessage(param);
+			if(isIOS())
+			 	webkit.messageHandlers.injectIntoApp.postMessage(param);
 
 			refresh();
 		}
@@ -50,7 +50,9 @@ function applyEvent() {
 }
 
 function requestCoupon(stpCnt, cpnTyp) {
-	//setStpCnt(stpCnt);
+	if(!isMobile()){
+		setStpCnt(stpCnt); //test : pc에서는 setStep ui로 직접 입력하게 바꿀 것
+	}
 	stpCnt = getStpCnt();
 	
 	let param = {

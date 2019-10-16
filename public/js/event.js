@@ -3,7 +3,6 @@ var gMbrNo = "MBR00000000000001512";
 var gEntNo = "ENT00000000000001181";
 var gStrId = "s00";
 var gMainBtn;
-var isMobile;
 	
 function setMainButton(enabled, text) {
 	$(gMainBtn).prop('disabled', !enabled);
@@ -28,25 +27,30 @@ function loadUserInfo () {
 }
 
 function renderMobileOrPC() {
-	gIsMobile = isMobile();
-	if(gIsMobile) {
+	if(isMobile()) {
 		gMainBtn = '#btnApply-mobile';
 		$('#btnApply-pc').hide();
+		$('#topThumbnail').show();
+		$('#eventImgs').show();
+		$('#agent').text('mobile');
 	} else {
 		gMainBtn = '#btnApply-pc';
 		$('#btnApply-mobile').hide(); 
 
 		$('#topThumbnail').hide();
 		$('#eventImgs').hide();
+		$('#agent').text('PC');
 	}
 }
 $(document).ready(function(){
 
 	renderMobileOrPC();
+	//api
 	loadUserInfo();
 	couponStatus();
 	eventStatus();
 	loadMyInfo();
+	$("#curDate").text(yymmdd(getToday()));
 
 	console.log('getToday():', getToday());
 });
