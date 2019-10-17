@@ -193,7 +193,7 @@ function loadMyInfo() {
 		//alert('my-event:' + JSON.stringify(res));
 		
 		if(applicableStatus=='applicable') {
-			setMainButton(true, '이벤트 지원하기');
+			// setMainButton(true, '이벤트 지원하기');
 
 			$("#button-start").show();
 			$("#button-ing").hide();
@@ -202,7 +202,7 @@ function loadMyInfo() {
 			$("#curEventInfo").hide();
 
 		} else if (applicableStatus==('todayParticipating')) {
-			setMainButton(false, '이벤트가 진행중입니다');
+			// setMainButton(false, '이벤트 진행중입니다');
 
 			$("#button-start").hide();
 			$("#button-ing").show();
@@ -216,7 +216,7 @@ function loadMyInfo() {
 			$("#button-done").hide();
 
 		} else if (applicableStatus==('todayFinishded')) {
-			setMainButton(false, '오늘 이벤트에 참여하셨습니다');
+			// setMainButton(false, '오늘 이벤트에 참여하셨습니다');
 
 			$("#button-start").show();
 			$("#button-ing").hide();
@@ -225,7 +225,7 @@ function loadMyInfo() {
 			$("#curEventInfo").hide();
 
 		} else if(applicableStatus==('allParticipated')) {
-			setMainButton(false, '이벤트에 모두 참여하셨습니다');
+			// setMainButton(false, '이벤트에 모두 참여하셨습니다');
 
 			$("#button-start").hide();
 			$("#button-ing").hide();
