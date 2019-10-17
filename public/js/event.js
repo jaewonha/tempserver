@@ -69,6 +69,7 @@ function renderMobileOrPC() {
 	}
 
 	if(isMobile()) {
+		console.log("isMobile------------------------")
 		gMainBtn = '#btnApply-mobile';
 		$('#btnApply-pc').hide();
 		$('#agent').text('mobile');
@@ -86,6 +87,7 @@ function renderMobileOrPC() {
 		$("#event-1-header-img-wrapper").addClass("event-1-header-img-wrapper-mobile");
 
 	} else {
+		console.log("isMobile------------------------ NOT")
 		if (!getUrlParameter('admin')) {
 			$('#topThumbnail').hide();
 			$("#stepper").hide();
@@ -96,6 +98,7 @@ function renderMobileOrPC() {
 		$('#btnApply-mobile').hide(); 
 		$('#couponThumb').hide();
 		$('#agent').text('PC');
+		$("#stepper").show();
 		$("#for-debug-area").show();
 
 		$("#header-top").removeClass("header-top-mobile");
@@ -170,6 +173,7 @@ function initialize() {
 		updateStepsUI(stpCnt);
 		updateProgress(stpCnt);
 		updateGettingCouponArea(stpCnt);
+		updateCoupons();
 	});
 
 	$("#got-my-events-count").bind("DOMSubtreeModified", function () {
