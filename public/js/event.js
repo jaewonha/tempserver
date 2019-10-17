@@ -63,14 +63,8 @@ function renderMobileOrPC() {
 }
 $(document).ready(function(){
 
-<<<<<<< Updated upstream
-	renderMobileOrPC();
-	//api
-	loadUserInfo();
-=======
 	renderMobileOrPC(); //ui
 	loadUserInfo(); //below is api call
->>>>>>> Stashed changes
 	couponStatus();
 	eventStatus();
 	loadMyInfo();
