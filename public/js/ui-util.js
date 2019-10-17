@@ -147,8 +147,61 @@ function updateProgress(steps) {
   $("#guageProgress").css("width", guageProgress + "%");
 }
 
+var agreed = false;
+
+$(document).ready(function () {
+
+  function appFunctionPedometer() {
+    location.href = "toapp:::AppFunction:::Pedometer";
+  }
+
+// START 클릭
+  $("#btnApply-mobile").click(function () {
+    // TODO: 기존에 동의 했는지 체크하는 부분 필요함
+    var isAlreadyAgreed = false;
+    if (!isAlreadyAgreed) {
+      $("#agree-modal").modal("show");
+      return;
+    }
+    appFunctionPedometer();
+  });
+  
+  // 약관 동의 체크박스
+  $("#agree-check-button-area").click(function () {
+    $("#agree-check-button-marker").show();
+    $("#not-agree-check-button-marker").hide();
+    $("#agree-ok-button").css("background-color", "#132daa");
+    $("#agree-ok-img").css("opacity", "1");
+    agreed = true;
+  });
+
+  // 약관 비동의 체크박스
+  $("#not-agree-check-button-area").click(function () {
+    $("#agree-check-button-marker").hide();
+    $("#not-agree-check-button-marker").show();
+    $("#agree-ok-button").css("background-color", "#404040");
+    $("#agree-ok-img").css("opacity", "0.5");
+    agreed = false;
+  });
+
+  // 약관 동의 확인버튼
+  $("#agree-ok-button").click(function () {
+    if (!agreed) {
+      return;
+    }
+    $("#agree-modal").modal("hide");
+    $("#event-intro-modal").modal("show");
+  });
+
+  // 이벤트 안내창 창닫기 버튼
+  $("#event-intro-close-button").click(function () {
+    $("#event-intro-modal").modal("hide");
+    appFunctionPedometer();
+  });
+});
+
 // for test
-function scrollToCoupon() {
+function updateSteps() {
   var steps = 39000;
   updateStepsUI(steps);
   updateProgress(steps);
