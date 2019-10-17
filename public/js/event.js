@@ -117,18 +117,18 @@ function renderMobileOrPC() {
 
 $(document).ready(function(){
 	console.log('document.ready()');
-	if(!isMobile()) initialize();
+	if(!isMobile()) _initialize();
 });
 
 function webviewLoadFinished() {
 	if(isAndroid()) {
 		console.log('webviewLoadFinished()');
 		console.log('>>', Pedometer.isLogin(), Pedometer.getUserInfo());
-		initialize();
+		_initialize();
 	}
 }
 
-function initialize() {
+function _initialize() {
 	//hideAllImg();
 
   //0. for display

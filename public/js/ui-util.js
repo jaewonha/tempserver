@@ -34,7 +34,7 @@ function scrollTo(id) {
 
 function refresh() {
 	//location.reload();
-	initialize();
+	_initialize();
 }
 
 function isNativeMobile() {
@@ -339,7 +339,7 @@ function updateCoupons() {
 
   // stpCnt 보여주기
   var stpCnt = getStpCnt();
-  $("#stepCountFirst").text(stpCnt);
+  // $("#stepCountFirst").text(stpCnt);
 
   // var rounds = [1, 2];  // 차수
   var steps = [4000, 10000, 15000, 40000];  // 쿠폰 4가지 기준 steps
