@@ -13,11 +13,11 @@
 	<script type="text/javascript" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/js/modal-loading.js"></script>
  -->
 	<!-- event -->
-	  <link rel="stylesheet" href="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/css/style.css">
-	  <script type="text/javascript" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/js/util.js"></script>
-	  <script type="text/javascript" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/js/ui-util.js"></script>
-	  <script type="text/javascript" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/js/api.js"></script>
-	  <script type="text/javascript" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/js/event.js"></script>
+	  <link rel="stylesheet" href="/css/style.css">
+	  <script type="text/javascript" src="/js/util.js"></script>
+	  <script type="text/javascript" src="/js/ui-util.js"></script>
+	  <script type="text/javascript" src="/js/api.js"></script>
+	  <script type="text/javascript" src="/js/event.js"></script>
 
 	<script>
 	function scrollToCoupon() {
@@ -90,7 +90,7 @@
 				</div>
 				<div class="get-coupon-wrapper-mobile">
 					<div style="position: absolute; top: 6.1vw; left: -15vw; right: -15vw; background-color: #e82e73; height: 50vw;">
-						<div style="position: absolute; left: 20vw; right: 20vw; bottom: -7vw;">
+						<div style="position: absolute; left: 15vw; right: 15vw; bottom: -7vw;">
 							<button class="btn-lotte btn-black" id="btnRequestCoupon" onClick="scrollToCoupon()">쿠폰 받기</button>
 						</div>
 					</div>
@@ -154,8 +154,47 @@
 
 
 		</div>
-		<div style="background-color: #ffffff; padding-bottom: 30px;"></div>
+		<div style="background-color: #ffffff; padding-top: 10%;">
+			<img src="/img/stepper_last_desc.png" alt="" style="width: 90%;">
+		</div>
+		<div style="background-color: #ffffff; padding-bottom: 10%;"></div>
 	</div>
+
+	<div style="background-color: #73c4ee; margin-top: 10%; padding: 7%;">
+		<div style="position: relative; height: 5%;">
+			<div style=" position:absolute; top: -150%; left: 0; right: 0;">
+				<img src="/img/event1_header.png" style="width: 50%;">
+			</div>
+		</div>
+
+		<div style="background-color: #ffffff; padding-top: 20%; padding-bottom: 10%;">
+			<img src="/img/event1_title.png" style="width: 70%;">
+		</div>
+
+		<div style="background-color: #000000;">
+			<div style="border: 5px solid #000000;">
+				<iframe width="100%"
+						src="https://www.youtube.com/embed/tgbNymZ7vqY"
+						style="border: 0;">
+				</iframe>
+			</div>
+		</div>
+
+		<div style="background-color: #ffffff; padding-top: 10%; padding-bottom: 10%;">
+			<img src="/img/event1_desc.png" alt="" style="width: 80%;">
+		</div>
+
+	</div>
+
+	<div style="background-color: #e8e8e8;">
+		<img src="/img/event1_last.png" alt="" style="width: 100%;">
+	</div>
+
+	<div id="eventImgs">
+		<img src="/img/event2_full.png"><br>
+	</div>
+	<hr>
+
 
 	<span id="curDate"></span><br>
 	<span id="agent"></span><br>
@@ -166,11 +205,11 @@
 	<a href="http://10.12.21.58:8080/test/pedometer-event?addDay=2" />+2Day</a>
 	<hr>
 
-<!--	<div>-->
-<!--		<div> <span id="userName"></span> 고객님 걷기 이벤트에 참여하세요! </div>-->
-<!--		<hr>-->
-<!--	</div>-->
-	
+	<!--	<div>-->
+	<!--		<div> <span id="userName"></span> 고객님 걷기 이벤트에 참여하세요! </div>-->
+	<!--		<hr>-->
+	<!--	</div>-->
+
 	<div>
 		<h4> 진행중 이벤트 </h4>
 		<div id="curEventInfo">
@@ -187,14 +226,7 @@
 		<br>
 	</div>
 
-
-	<div id="eventImgs">
-		<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/event1.jpg"><br>
-		<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/event2.jpg"><br>
-		<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/event3.jpg"><br> 
-	</div>
-	<hr>
-	
+	<!-- TODO: 새 UI와 쿠폰 연동 해야 함 -->
 	<div id="couponStatusAndRequest">
 		<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/coupon-top.jpg"><br>
 			
@@ -225,13 +257,51 @@
 <!--				</div>-->
 
 				<!-- Modal body -->
-				<div class="modal-body">
-					<div>롯데 4주년 기념 이벤트</div>
-					<div>이벤트 참여 현황</div>
-
-					<div style="padding-top: 20px;">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				<div class="modal-body" style="background-color: #e82e73; padding: 5%;">
+					<div style="padding: 5%;">
+						<img src="/img/coupon_header.png" alt="" style="width: 75%;">
 					</div>
+					<div style="color: #ffffff; text-align: left; font-size: 17px; font-weight: bold;">
+						1차: 총 <span id="steps_first">15,000</span>걸음
+					</div>
+					<div style="display: flex; position: relative;">
+						<div style="position: relative;">
+							<img src="/img/coupon_bg_left_white.png" alt="" style="flex:1;">
+							<div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: 0 solid green; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+<!--								<div>-->
+<!--									<img src="/img/coupon_4000.png" alt="" style="width: 52%;">-->
+<!--								</div>-->
+<!--								<div>-->
+<!--									<img src="/img/coupon_10000.png" alt="" style="width: 50%;">-->
+<!--								</div>-->
+<!--								<div>-->
+<!--									<img src="/img/coupon_15000.png" alt="" style="width: 59%;">-->
+<!--									<img src="/img/coupon_15000_desc.png" alt="" style="width: 52%; padding-top: 3%;">-->
+<!--								</div>-->
+								<div>
+									<img src="/img/coupon_40000.png" alt="" style="width: 52%;">
+								</div>
+							</div>
+						</div>
+						<div style="position: relative;">
+<!--							<img src="/img/coupon_bg_right_yellow.png" alt="" style="flex: 1;">-->
+							<img src="/img/coupon_bg_right_grey.png" alt="" style="flex: 1;">
+							<div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: 0 solid green; display: flex; align-items: center; justify-content: center;">
+<!--								<img src="/img/coupon_v.png" alt="" style="width: 40%;">-->
+								<img src="/img/coupon_lock.png" alt="" style="width: 40%;">
+							</div>
+						</div>
+<!--						<img src="/img/coupon_overlay_dark.png" alt="" style="position: absolute; top: 0; left: 0; right: 0;">-->
+<!--						<div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center;">-->
+<!--							<img src="/img/coupon_closed.png" alt="" style="width: 50%;">-->
+<!--						</div>-->
+					</div>
+
+				</div>
+				<div>
+					<button type="button" style="border: 0; padding: 0;" data-dismiss="modal">
+						<img src="/img/coupon_close_button.png" alt="">
+					</button>
 				</div>
 
 			</div>
