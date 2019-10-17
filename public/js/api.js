@@ -27,7 +27,6 @@ function API(endpoint, method, param, callback) {
 }
 
 function applyEvent() {
-	console.log('aaaaaaa');
 	let param = {
 		"entNo":gEntNo,
 		"mbrNo":gMbrNo,
