@@ -315,6 +315,10 @@ function updateCoupons() {
   //   },
   // ];
 
+  if (!myEvents || myEvents.length === 0) {
+    return;
+  }
+
   // 1차의 stpCnt 보여주기 & 2차 보여주기
   $("#round-2").hide();
   if (myEvents.length < 2) {
