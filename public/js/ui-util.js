@@ -345,7 +345,7 @@ function updateCoupons() {
   var steps = [4000, 10000, 15000, 40000];  // 쿠폰 4가지 기준 steps
 
   var topTag = "#coupon1_";
-  var startDate = myEvents[i].startDtm.substr(0, 8);
+  var startDate = getToday().substr(0, 8);
 
   for (var j = 0; j < steps.length; j++) {
     var targetTag = topTag + steps[j];
