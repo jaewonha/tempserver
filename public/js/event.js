@@ -62,12 +62,17 @@ function renderMobileOrPC() {
 	}
 }
 $(document).ready(function(){
-
+  //0. for display
 	renderMobileOrPC(); //ui
-	loadUserInfo(); //below is api call
-	couponStatus();
-	eventStatus();
+
+  //1. admin
+	loadUserInfo(); //for debug
+  couponStatus();
+  eventStatus();
+
+  //2.
 	loadMyInfo();
+
 	$("#curDate").text(yymmdd(getToday()));
 
 	console.log('getToday():', getToday());

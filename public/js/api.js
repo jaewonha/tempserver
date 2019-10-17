@@ -27,7 +27,7 @@ function applyEvent() {
 	let param = {
 		"entNo":gEntNo,
 		"mbrNo":gMbrNo,
-		"strCd":gStrCd,
+		"strCd":gStrCd, //native injection
 		"startDtm":getToday()
 	}
 
@@ -112,8 +112,8 @@ function eventStatus() {
 
 function couponStatus() {
 	API('/pedometer/admin/coupon-status', 'get', {
-		"mbrNo":gMbrNo,
-		"entNo":gEntNo
+		"mbrNo":gMbrNo,  // member number
+		"entNo":gEntNo   // event number
 	}, (res) => {
 		//var resStr = JSON.stringify(res, null, 2); 
 		//$('#couponStatus').text(resStr);
@@ -154,17 +154,17 @@ function loadMyInfo() {
 	API('/pedometer/my-event', 'get', {
 		"mbrNo":gMbrNo,
 		"entNo":gEntNo,
-		"startDtm":getToday()
+		"startDtm":getToday() //중복 조회 쿼리하기 위해 (내 정보 조회 후 어플라이 가정)
 	}, (res) => {
 		var applicableStatus = res.applicableStatus;
-		var participatingEvent = res.participatingEvent;
 		/*
 			public static final String TODAY_PARTICIPATING = "todayParticipating";
 			public static final String TODAY_FINISHED = "todayFinishded";
 			public static final String APP_PARTICIPATED = "allParticipated";
 			public static final String NOT_PEDOMETER_EVENT = "notPedometerEvent";
 			public static final String APPLICABLE = "applicable";
-		*/	
+		*/
+		var participatingEvent = res.participatingEvent;
 		console.log('my-event:',res);
 		//alert('my-event:' + JSON.stringify(res));
 		
@@ -174,7 +174,7 @@ function loadMyInfo() {
 		} else if (applicableStatus==('todayParticipating')) {
 			setMainButton(false, '이벤트가 진행중입니다'); 
 			$("#curEventInfo").show();
-			startCountDown(participatingEvent.startDtm, '#timeCounter');
+			startCountDown(participatingEvent.startDtm, '#timeCounter'); //getTime () ~ 24hours
 		} else if (applicableStatus==('todayFinishded')) {
 			setMainButton(false, '오늘 이벤트에 참여하셨습니다'); 
 			$("#curEventInfo").hide();
@@ -186,7 +186,7 @@ function loadMyInfo() {
 			alert('알 수 없는 오류:applicableStatus:' + applicableStatus)
 		}
 
-		$('#attendCount').text(res.myPedometerEvent.length);
+		$('#attendCount').text(res.myPedometerEvent.length); //참여횟수
 		//var resStr = JSON.stringify(res.myPedometerEvent, null, 2);
 		//document.getElementById('history').innerText = resStr;
 		displayJsonTable('#history', ['startDtm', 'mbrNo', 'stpCnt'], res.myPedometerEvent);
