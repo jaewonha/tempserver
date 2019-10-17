@@ -189,8 +189,8 @@ function loadMyInfo() {
 		*/
 		var participatingEvent = res.participatingEvent;
 		console.log('my-event:',res);
-		//alert('my-event:' + JSON.stringify(res));
-		
+		alert('my-event:' + JSON.stringify(res));
+
 		if(applicableStatus=='applicable') {
 			// setMainButton(true, '이벤트 지원하기');
 
@@ -209,10 +209,6 @@ function loadMyInfo() {
 
 			$("#curEventInfo").show();
 			startCountDown(participatingEvent.startDtm, '#timeCounter'); //getTime () ~ 24hours
-
-			$("#button-start").show();
-			$("#button-ing").hide();
-			$("#button-done").hide();
 
 		} else if (applicableStatus==('todayFinishded')) {
 			// setMainButton(false, '오늘 이벤트에 참여하셨습니다');
