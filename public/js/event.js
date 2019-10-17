@@ -2,6 +2,8 @@
 var gMbrNo = "MBR00000000000001512";
 var gEntNo = "ENT00000000000001181";
 var gStrCd = "s00";
+var gMbrNm;
+var gMbrPhone;
 var gMainBtn;
 
 var issuedCoupons = [];
@@ -15,7 +17,20 @@ function setMainButton(enabled, text) {
 
 function setStpCnt(stpCnt) {
 	console.log('setStpCnt:', stpCnt);
+	console.log('gMbrNm:', gMbrNm);
+	console.log('gMbrPhone:', gMbrPhone);
+	console.log('gStrCd:', gStrCd);
 	$('#stepCount').text(stpCnt);
+}
+
+function injectFromNative(entNo, mbrNo, mbrNm, mbrPhone, strCd) {
+	gMbrNo = entNo;
+	gEntNo = mbrNo;
+	gStrCd = strCd;
+	gMbrNm = mbrNm;
+	gMbrPhone = mbrPhone;
+	console.log('inject:', [gMbrNo, gEntNo, gStrCd, gMbrNm, gMbrPhone]);
+	loadUserInfo();
 }
 
 function getStpCnt(stpCnt) {
@@ -32,7 +47,7 @@ function getCoupon() {
 }
 
 function loadUserInfo () {
-	$("#userName").text(gMbrNo);
+	$("#userName").text(gMbrNm);
 	$("#userMbrNo").text(gMbrNo);
 	$("#userEntId").text(gEntNo);
 	$("#userStrCd").text(gStrCd);
@@ -86,6 +101,11 @@ $(document).ready(function(){
 	loadMyInfo();
 
 	$("#curDate").text(yymmdd(getToday()));
+	if(isEmptyStr(gMbrNm)&&false) {
+		console.log('>>user info null -> not login');
+		$("#stepCount").hide();
+		$("#loginToSeeInfo").removeClass('hidden');
+	}
 
 	console.log('getToday():', getToday());
 
