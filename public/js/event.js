@@ -65,28 +65,42 @@ function renderMobileOrPC() {
 		gMainBtn = '#btnApply-mobile';
 		$('#btnApply-pc').hide();
 		$('#agent').text('mobile');
+		$("#for-debug-area").hide();
 
 		$("#header-top").removeClass("header-top-pc");
 		$("#header-top").addClass("header-top-mobile");
 		$("#main-intro").removeClass("main-intro-pc");
 		$("#main-intro").addClass("main-intro-mobile");
+		$("#event-1-body").removeClass("event-1-body-pc");
+		$("#event-1-body").addClass("event-1-body-mobile");
+		$("#event-1-header").removeClass("event-1-header-pc");
+		$("#event-1-header").addClass("event-1-header-mobile");
+		$("#event-1-header-img-wrapper").removeClass("event-1-header-img-wrapper-pc");
+		$("#event-1-header-img-wrapper").addClass("event-1-header-img-wrapper-mobile");
 
 	} else {
 		if (!getUrlParameter('admin')) {
 			$('#topThumbnail').hide();
 			$("#stepper").hide();
+			$("#for-debug-area").hide();
 		}
 		//pc test admin
 		gMainBtn = '#btnApply-pc';
 		$('#btnApply-mobile').hide(); 
-		$('#eventImgs').hide();
 		$('#couponThumb').hide();
 		$('#agent').text('PC');
+		$("#for-debug-area").show();
 
 		$("#header-top").removeClass("header-top-mobile");
 		$("#header-top").addClass("header-top-pc");
 		$("#main-intro").removeClass("main-intro-mobile");
 		$("#main-intro").addClass("main-intro-pc");
+		$("#event-1-body").removeClass("event-1-body-mobile");
+		$("#event-1-body").addClass("event-1-body-pc");
+		$("#event-1-header").removeClass("event-1-header-mobile");
+		$("#event-1-header").addClass("event-1-header-pc");
+		$("#event-1-header-img-wrapper").removeClass("event-1-header-img-wrapper-mobile");
+		$("#event-1-header-img-wrapper").addClass("event-1-header-img-wrapper-pc");
 	}
 }
 

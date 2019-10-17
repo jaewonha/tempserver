@@ -188,6 +188,10 @@ function appFunctionPedometer() {
   location.href = "toapp:::AppFunction:::Pedometer";
 }
 
+function openAgreeModal() {
+  $("#agree-modal").modal("show");
+}
+
 // UI 관련
 function setEventListners() {
 

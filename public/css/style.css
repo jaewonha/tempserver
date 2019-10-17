@@ -104,17 +104,17 @@ h4 {
 }
 
 .main-intro-mobile {
-    padding: 10vw 16vw 15vw 16vw;
+    padding: 5vw 12vw 8vw 10vw;
 }
 
 .main-intro-pc {
-    padding: 30px 40px 38px 40px;
+    padding: 7% 9%;
 }
 
 .stepper-mobile {
     display: none;
-    padding-left: 7vw;
-    padding-right: 7vw;
+    padding-left: 4.8%;
+    padding-right: 4.8%;
 }
 
 .stepper-attended-mobile {
@@ -127,12 +127,12 @@ h4 {
 
 .stepper-counter-mobile {
     background-color: #ffffff;
-    padding: 10vw 10vw 0 10vw;
+    padding: 8vw 5vw 0 5vw;
     position: relative;
 }
 
 .counter-bg-mobile {
-    width: 13.1vw;
+    width: 16.1vw;
 }
 
 .counter-number-mobile {
@@ -141,19 +141,21 @@ h4 {
     left: 0;
     /*border: 1px solid red;*/
     font-family: 'Fjalla One';
-    font-size: 18vw;
-    width: 13.1vw;
+    font-size: 19vw;
+    width: 16.1vw;
+    padding-top: 2vw;
     /*display: flex;*/
     /*flex-direction: row;*/
 }
 
 .progress-mobile {
     background-color: #ffffff;
-    padding: 10vw 8vw 11vw 8vw;
+    padding: 5vw 4vw;
 }
 
 .progress-header-mobile {
-	width: 10vw;
+    padding-left: 1vw;
+	width: 5vw;
 }
 
 .guage-progress-mobile {
@@ -167,7 +169,7 @@ h4 {
 
 .buttons-mobile {
 	background-color: #ffffff;
-	padding: 6vw 8vw 3vw 8vw;
+	padding: 1vw 8vw 3vw 8vw;
 }
 
 .get-coupon-wrapper-mobile {
@@ -234,3 +236,58 @@ h4 {
     position: relative;
     margin-top: 3%;
 }
+
+.youtube-container {
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.youtube-container iframe,.youtube-container object,.youtube-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.event-1-body-mobile {
+    background-color: #73c4ee;
+    margin-top: 10vw;
+    padding: 4.8%;
+}
+
+.event-1-body-pc {
+    background-color: #73c4ee;
+    margin-top: 10%;
+    padding: 4.8%;
+}
+
+.event-1-header-mobile {
+    position: relative;
+    padding-top: 9vw;
+    height: 3vw;
+}
+
+.event-1-header-pc {
+    position: relative;
+    padding-top: 11%;
+    height: 1%;
+}
+
+.event-1-header-img-wrapper-mobile {
+    position: absolute;
+    top: -10vw;
+    left: 0;
+    right: 0;
+}
+
+.event-1-header-img-wrapper-pc {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    right: 0;
+}
+

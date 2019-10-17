@@ -91,8 +91,8 @@
 					<button class="btn-lotte btn-grey">이벤트 종료</button>
 				</div>
 				<div class="get-coupon-wrapper-mobile">
-					<div style="position: absolute; top: 6.1vw; left: -15vw; right: -15vw; background-color: #e82e73; height: 50vw;">
-						<div style="position: absolute; left: 15vw; right: 15vw; bottom: -7vw;">
+					<div style="position: absolute; top: 6.1vw; left: -13vw; right: -13vw; background-color: #e82e73; height: 50vw;">
+						<div style="position: absolute; left: 13vw; right: 13vw; bottom: -7vw;">
 							<button class="btn-lotte btn-black" id="btnRequestCoupon" onClick="openCouponModal()">쿠폰 받기</button>
 						</div>
 					</div>
@@ -103,7 +103,7 @@
 					<div style="position: absolute; top: 15vw; left: 0; right: 0;">
 						<div style="color: #ffffff; font-size: 3.5vw; padding-bottom: 1.5vw; position: relative;">
 							쿠폰 수령 가능 시간이
-							<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/left-time-icon.png" alt="" style="position: absolute; top: 3vw; right: -3vw; width: 6vw;">
+							<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/left-time-icon.png" alt="" style="position: absolute; top: 3vw; right: -1vw; width: 6vw;">
 						</div>
 						<div style="border: 0 solid yellow; display: flex; flex-direction: row; justify-content: center; align-items: center;">
 							<div style="position: relative;">
@@ -162,28 +162,28 @@
 		<div style="background-color: #ffffff; padding-bottom: 10%;"></div>
 	</div>
 
-	<div style="background-color: #73c4ee; margin-top: 10%; padding: 7%;">
-		<div style="position: relative; height: 5%;">
-			<div style=" position:absolute; top: -150%; left: 0; right: 0;">
+	<div id="event-1-body" class="event-1-body-mobile">
+		<div id="event-1-header" class="event-1-header-mobile">
+			<div id="event-1-header-img-wrapper" class="event-1-header-img-wrapper-mobile">
 				<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/event1_header.png" style="width: 50%;">
 			</div>
 		</div>
 
-		<div style="background-color: #ffffff; padding-top: 20%; padding-bottom: 10%;">
-			<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/event1_title.png" style="width: 70%;">
+		<div style="background-color: #ffffff; padding-top: 12%; padding-bottom: 10%;">
+			<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/event1_title.png" style="width: 60%;">
 		</div>
 
-		<div style="background-color: #000000;">
-			<div style="border: 5px solid #000000;">
-				<iframe width="100%"
-						src="https://www.youtube.com/embed/tgbNymZ7vqY"
-						style="border: 0;">
-				</iframe>
+		<div style="background-color: #ffffff; padding: 4%;">
+			<div style="background-color: #000000; padding: 1%;">
+				<div class="youtube-container" style="border: 5px solid #000000;">
+					<iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" style="border: 0;">
+					</iframe>
+				</div>
 			</div>
 		</div>
 
 		<div style="background-color: #ffffff; padding-top: 10%; padding-bottom: 10%;">
-			<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/event1_desc.png" alt="" style="width: 80%;">
+			<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/event1_desc.png" alt="" style="width: 93%;">
 		</div>
 
 	</div>
@@ -195,62 +195,13 @@
 	<div id="eventImgs">
 		<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/event2_full.png"><br>
 	</div>
-	<hr>
-
-
-	<span id="curDate"></span><br>
-	<span id="agent"></span><br>
-	<a href="http://10.12.21.58:8080/test/pedometer-event?addDay=-2" />-2Day</a>
-	<a href="http://10.12.21.58:8080/test/pedometer-event?addDay=-1" />-1Day</a>
-	<a href="http://10.12.21.58:8080/test/pedometer-event" />Today</a>
-	<a href="http://10.12.21.58:8080/test/pedometer-event?addDay=1" />+1Day</a>
-	<a href="http://10.12.21.58:8080/test/pedometer-event?addDay=2" />+2Day</a>
-	<hr>
-
-	<!--	<div>-->
-	<!--		<div> <span id="userName"></span> 고객님 걷기 이벤트에 참여하세요! </div>-->
-	<!--		<hr>-->
-	<!--	</div>-->
-
-	<div>
-		<h4> 진행중 이벤트 </h4>
-		<div id="curEventInfo" style="display: none;">
-			<h5> <span id="stepCount">0</span>걸음 </h5>
-<!--			<h5> <span id="guage"></span>% </h5>-->
-			<h5> <span id="timeCounter">[타이머]</span> </h5>
-		</div>
-		<div class="hidden" id="loginToSeeInfo">로그인하셔야 정보를 확인할 수 있습니다"</div>
-
-		<button class="btn btn-primary event-button" id="btnApply-pc" onClick="applyEvent()">이벤트 참여하기(PC)</button>
-		<br>
-
-		<br>
-		<br>
-		<br>
-	</div>
-
-	<!-- TODO: 새 UI와 쿠폰 연동 해야 함 -->
-	<div id="couponStatusAndRequest">
-<!--		<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/coupon-top.jpg"><br>-->
-			
-		<br><h4> All Coupons </h4>	<div id="couponStatus"></div>
-<!--		<br><h4 id="getCoupons"> Get Coupons </h4>-->
-<!--		<button class="btn btn-outline-dark btn-sm" id="btnStep0" onClick="requestCoupon(0, 'participant')">participating</button>-->
-<!--		<button class="btn btn-outline-dark btn-sm" id="btnStep4000" onClick="requestCoupon(4000, 'discnt4000')">discount4000</button>-->
-<!--		<button class="btn btn-outline-dark btn-sm" id="btnStep10000" onClick="requestCoupon(10000, 'discnt10000')">discount10000</button>-->
-<!--		<button class="btn btn-outline-dark btn-sm" id="btnStep15000" onClick="requestCoupon(15000, 'coffee')">coffee</button>-->
-<!--		<button class="btn btn-outline-dark btn-sm" id="btnStep40000" onClick="requestCoupon(40000, 'discnt40000')">discount4000</button>-->
-<!--		<button class="btn btn-outline-dark btn-sm" id="btnFinalStep" onClick="finalizeSteps()">Finalize Step</button>-->
-		<br><br><h4> My Coupons </h4>	<div id="myCoupons"></div>
-	</div>
-	<hr>
 
 <!--	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#coupons-modal">-->
 <!--		Open modal-->
 <!--	</button>-->
 
 	<div class="modal" id="coupons-modal">
-		<div class="modal-dialog">
+		<div class="modal-dialog-center" style="padding: 10px;">
 			<div class="modal-content">
 
 				<!-- Modal Header -->
@@ -489,13 +440,13 @@
 		</div>
 	</div>
 
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#event-intro-modal">
-			Open agree
-	</button>
+<!--	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#event-intro-modal">-->
+<!--			Open agree-->
+<!--	</button>-->
 
 	<!-- 사용자 동의 팝업 - Modal -->
 	<div class="modal" id="agree-modal">
-		<div class="modal-dialog">
+		<div class="modal-dialog-center" style="padding: 10px;">
 			<div class="modal-content">
 				<div class="modal-header" style="padding: 4px;">
 					<h4 class="modal-title"></h4>
@@ -535,7 +486,7 @@
 
 	<!-- 이벤트 안내 팝업 - Modal -->
 	<div class="modal" id="event-intro-modal">
-		<div class="modal-dialog">
+		<div class="modal-dialog-center" style="padding: 10px;">
 			<div class="modal-content">
 				<div class="modal-body" style="padding: 0; position: relative;">
 					<div style="background-color: #ffffff; padding-top: 12.8%;">
@@ -556,34 +507,90 @@
 		</div>
 	</div>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	
-	
-	<!-- <h3> Development </h3> -->
+	<div id="for-debug-area">
 
-	<h4> My Events </h4>		<div id="history"></div>
-		
-	<hr>
-	
-	<h4> User Info </h4>
-	<span id="userMbrNo"></span><br>
-	<span id="userEntId"></span><br>
-	<span id="userStrId"></span><br>
-	
-		
-	<h4> Clear User Info </h4>
-		<button class="btn btn-outline-dark btn-sm" id="btnClearMyEvent" onClick="clearMyEvent()">clearMyEvent</button>
-		<button class="btn btn-outline-dark btn-sm" id="btnClearCouponMapped" onClick="clearMyCoupon()">btnClearCouponMapped</button>
+		<div id="couponStatusAndRequest">
+			<!--		<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/coupon-top.jpg"><br>-->
+
+			<br><h4> All Coupons </h4>	<div id="couponStatus"></div>
+			<!--		<br><h4 id="getCoupons"> Get Coupons </h4>-->
+			<!--		<button class="btn btn-outline-dark btn-sm" id="btnStep0" onClick="requestCoupon(0, 'participant')">participating</button>-->
+			<!--		<button class="btn btn-outline-dark btn-sm" id="btnStep4000" onClick="requestCoupon(4000, 'discnt4000')">discount4000</button>-->
+			<!--		<button class="btn btn-outline-dark btn-sm" id="btnStep10000" onClick="requestCoupon(10000, 'discnt10000')">discount10000</button>-->
+			<!--		<button class="btn btn-outline-dark btn-sm" id="btnStep15000" onClick="requestCoupon(15000, 'coffee')">coffee</button>-->
+			<!--		<button class="btn btn-outline-dark btn-sm" id="btnStep40000" onClick="requestCoupon(40000, 'discnt40000')">discount4000</button>-->
+			<!--		<button class="btn btn-outline-dark btn-sm" id="btnFinalStep" onClick="finalizeSteps()">Finalize Step</button>-->
+			<br><br><h4> My Coupons </h4>	<div id="myCoupons"></div>
+		</div>
+		<hr>
+
+		<hr>
+
+
+		<span id="curDate"></span><br>
+		<span id="agent"></span><br>
+		<a href="http://10.12.21.58:8080/test/pedometer-event?addDay=-2" />-2Day</a>
+		<a href="http://10.12.21.58:8080/test/pedometer-event?addDay=-1" />-1Day</a>
+		<a href="http://10.12.21.58:8080/test/pedometer-event" />Today</a>
+		<a href="http://10.12.21.58:8080/test/pedometer-event?addDay=1" />+1Day</a>
+		<a href="http://10.12.21.58:8080/test/pedometer-event?addDay=2" />+2Day</a>
+		<hr>
+
+		<!--	<div>-->
+		<!--		<div> <span id="userName"></span> 고객님 걷기 이벤트에 참여하세요! </div>-->
+		<!--		<hr>-->
+		<!--	</div>-->
+
+		<div>
+			<h4> 진행중 이벤트 </h4>
+			<div id="curEventInfo" style="display: none;">
+				<h5> <span id="stepCount">0</span>걸음 </h5>
+				<!--			<h5> <span id="guage"></span>% </h5>-->
+				<h5> <span id="timeCounter">[타이머]</span> </h5>
+			</div>
+			<div class="hidden" id="loginToSeeInfo">로그인하셔야 정보를 확인할 수 있습니다"</div>
+
+			<button class="btn btn-primary event-button" id="btnApply-pc" onClick="applyEvent()">이벤트 참여하기(PC)</button>
+			<br>
+
+			<br>
+			<br>
+			<br>
+		</div>
+
 		<br>
-	
-	<h3> Event Status </h3>	
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+
+
+		<!-- <h3> Development </h3> -->
+
+		<h4> My Events </h4>
+		<div id="history"></div>
+
+		<hr>
+
+		<h4> User Info </h4>
+		<span id="userMbrNo"></span><br>
+		<span id="userEntId"></span><br>
+		<span id="userStrId"></span><br>
+
+
+		<h4> Clear User Info </h4>
+		<button class="btn btn-outline-dark btn-sm" id="btnClearMyEvent" onClick="clearMyEvent()">clearMyEvent</button>
+		<button class="btn btn-outline-dark btn-sm" id="btnClearCouponMapped" onClick="clearMyCoupon()">
+			btnClearCouponMapped
+		</button>
+		<br>
+
+		<h3> Event Status </h3>
 		<div id="eventStatus"></div>
 		<br>
+
+	</div>
 
 	<input type="hidden" id="first-start-dtm">
 	<input type="hidden" id="second-start-dtm">
