@@ -79,10 +79,16 @@
 			</div>
 		</div>
 
-		<div class="buttons-mobile">
+		<div id="button-for-login" style="background-color: #ffffff;">
+			<a href="toapp:::AppFunction:::Pedometer">
+				<button class="btn-lotte btn-grey ripple" style="width: 82%;">로그인 해서<br>진행여부를 확인하세요</button>
+			</a>
+		</div>
+
+		<div id="buttons" class="buttons-mobile" style="display: none;">
 			<div id="button-one">
 				<div id="button-start" style="padding-top: 5vw;">
-					<button id="btnApply-mobile" class="btn-lotte btn-start">START</button>
+					<button id="btnApply-mobile" class="btn-lotte btn-start ripple">START</button>
 				</div>
 				<div id="button-ing" style="padding-top: 5vw;">
 					<button class="btn-lotte btn-grey">이벤트 진행중</button>
@@ -90,10 +96,10 @@
 				<div id="button-done" style="padding-top: 5vw;">
 					<button class="btn-lotte btn-grey">이벤트 종료</button>
 				</div>
-				<div id="get-coupon-wrapper" class="get-coupon-wrapper-mobile">
+				<div id="get-coupon-wrapper" class="get-coupon-wrapper-mobile" style="display: none;">
 					<div style="position: absolute; top: 6.1vw; left: -13vw; right: -13vw; background-color: #e82e73; height: 50vw;">
 						<div style="position: absolute; left: 13vw; right: 13vw; bottom: -7vw;">
-							<button class="btn-lotte btn-black" id="btnRequestCoupon" onClick="openCouponModal()">쿠폰 받기</button>
+							<button class="btn-lotte btn-black ripple" id="btnRequestCoupon" onClick="openCouponModal()">쿠폰 받기</button>
 						</div>
 					</div>
 					<div style="position: relative;">
@@ -150,7 +156,7 @@
 					<button class="btn-lotte btn-grey">쿠폰현황확인</button>
 				</div>
 				<div id="button-coupon-check" style="padding-top: 5vw;">
-					<button class="btn-lotte btn-blue" id="btnCouponStatus" onClick="openCouponModal()">쿠폰현황확인</button>
+					<button class="btn-lotte btn-blue ripple" id="btnCouponStatus" onClick="openCouponModal()">쿠폰현황확인</button>
 				</div>
 			</div>
 

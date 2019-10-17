@@ -137,6 +137,11 @@ function initialize() {
 			console.log('userInfo:', userInfo);
 			var arr = userInfo.split(',');
 			injectFromNative(arr[0], arr[1], arr[2], arr[3], arr[4]);
+			$("#button-for-login").hide();
+			$("#buttons").show();
+		} else {
+			$("#button-for-login").show();
+			$("#buttons").hide();
 		}
 	}
 
