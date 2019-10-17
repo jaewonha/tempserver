@@ -61,6 +61,7 @@ function startCountDown(rgstDtm, id) {
 }
 
 function _startCountDown(endDate, startDate, id) {
+  console.log(endDate, startDate)
   // Update the count down every 1 second
   var date = startDate;
   var timer = setInterval(function () {
@@ -156,6 +157,9 @@ function updateProgress(steps) {
   var remainSteps = steps - previousPointSteps;
   var addingPercent = sizePercent * (remainSteps / sizeSteps);
   var guageProgress = previousPointPercent + addingPercent;
+  if (guageProgress > guagePoints[3].percent) {
+    guageProgress = guagePoints[4].percent;
+  }
   // console.log(guageProgress, previousPointPercent, addingPercent)
   $("#guageProgress").css("width", guageProgress + "%");
 }
@@ -185,7 +189,7 @@ function updateGettingCouponArea(stpCnt) {
   _startCountDown(new Date(), lastTimeOfToday, "id");
 
   var successSteps = getSuccessSteps(stpCnt);
-  $("#successCount").text(successSteps);
+  // $("#successCount").text(successSteps);
 }
 
 var agreed = false;
@@ -333,84 +337,77 @@ function updateCoupons() {
     return;
   }
 
-  // 1차의 stpCnt 보여주기 & 2차 보여주기
-  $("#round-2").hide();
-  if (myEvents.length < 2) {
-    $("#stepCountFirst").text(myEvents[0].stpCnt);
-  } else {
-    $("#stepCountFirst").text(myEvents[0].stpCnt);
-    $("#stepCountSecond").text(myEvents[1].stpCnt);
-    $("#round-2").show();
-  }
+  // stpCnt 보여주기
+  var stpCnt = getStpCnt();
+  $("#stepCountFirst").text(stpCnt);
 
-  var rounds = [1, 2];  // 차수
+  // var rounds = [1, 2];  // 차수
   var steps = [4000, 10000, 15000, 40000];  // 쿠폰 4가지 기준 steps
-  for (var i = 0; i < myEvents.length; i++) {
-    var topTag = "#coupon" + rounds[i] + "_";
-    var stpCnt = myEvents[i].stpCnt;
-    var startDate = myEvents[i].startDtm.substr(0, 8);
 
-    for (var j = 0; j < steps.length; j++) {
-      var targetTag = topTag + steps[j];
-      // console.log(targetTag);
-      var r = rounds[i];
-      var baseSteps = steps[j];
-      var cpnTyp = guagePoints[j].cpnTyp;
+  var topTag = "#coupon1_";
+  var startDate = myEvents[i].startDtm.substr(0, 8);
 
-      var foundCoupon = issuedCoupons.find(function (item) {
-        return item.issueDtm.substr(0, 8) === startDate && item.cpnTyp === cpnTyp;
+  for (var j = 0; j < steps.length; j++) {
+    var targetTag = topTag + steps[j];
+    // console.log(targetTag);
+    // var r = rounds[i];
+    var baseSteps = steps[j];
+    var cpnTyp = guagePoints[j].cpnTyp;
+
+    var foundCoupon = issuedCoupons.find(function (item) {
+      return item.issueDtm.substr(0, 8) === startDate && item.cpnTyp === cpnTyp;
+    });
+    // console.log("foundCoupon:", foundCoupon);
+
+    // 기존에 걸려 있던 click listener 해제
+    $(targetTag).unbind("click");
+
+    // 보유한 쿠폰이 있으면 회색, 없으면 노란색
+    if (foundCoupon) {
+      $(targetTag).find(".coupon-yellow").hide();
+      $(targetTag).find(".coupon-grey").show();
+    } else {
+      $(targetTag).find(".coupon-yellow").show();
+      $(targetTag).find(".coupon-grey").hide();
+      $(targetTag).on('click', function () {
+        requestCoupon(baseSteps, cpnTyp);
+        // console.log("requestCoupon: ", baseSteps, cpnTyp);
       });
-      // console.log("foundCoupon:", foundCoupon);
+    }
 
-      // 기존에 걸려 있던 click listener 해제
+    // stpCnt에 따라 자물쇠 or V 표시
+    if (stpCnt >= baseSteps) {
+      $(targetTag).find(".coupon-unlocked").show();
+      $(targetTag).find(".coupon-locked").hide();
+    } else {
+      $(targetTag).find(".coupon-unlocked").hide();
+      $(targetTag).find(".coupon-locked").show();
+      $(targetTag).find(".coupon-yellow").hide();
+      $(targetTag).find(".coupon-grey").show();
       $(targetTag).unbind("click");
+    }
 
-      // 보유한 쿠폰이 있으면 회색, 없으면 노란색
-      if (foundCoupon) {
-        $(targetTag).find(".coupon-yellow").hide();
-        $(targetTag).find(".coupon-grey").show();
-      } else {
-        $(targetTag).find(".coupon-yellow").show();
-        $(targetTag).find(".coupon-grey").hide();
-        $(targetTag).on('click', function () {
-          requestCoupon(baseSteps, cpnTyp);
-          // console.log("requestCoupon: ", baseSteps, cpnTyp);
-        });
-      }
-
-      // stpCnt에 따라 자물쇠 or V 표시
-      if (stpCnt >= baseSteps) {
-        $(targetTag).find(".coupon-unlocked").show();
-        $(targetTag).find(".coupon-locked").hide();
-      } else {
-        $(targetTag).find(".coupon-unlocked").hide();
-        $(targetTag).find(".coupon-locked").show();
+    // 다 나간 쿠폰인지 확인하는 처리
+    if (!foundCoupon) {
+      var filteredCoupons = allCoupons.filter(function (item) {
+        return !item.mbrNo && item.cpnTyp === cpnTyp;
+      });
+      // console.log(filteredCoupons);
+      if (filteredCoupons.length === 0) {
+        stampAsClosed(targetTag, true);
         $(targetTag).find(".coupon-yellow").hide();
         $(targetTag).find(".coupon-grey").show();
         $(targetTag).unbind("click");
-      }
-
-      // 다 나간 쿠폰인지 확인하는 처리
-      if (!foundCoupon) {
-        var filteredCoupons = allCoupons.filter(function (item) {
-          return !item.mbrNo && item.cpnTyp === cpnTyp;
-        });
-        // console.log(filteredCoupons);
-        if (filteredCoupons.length === 0) {
-          stampAsClosed(targetTag, true);
-          $(targetTag).find(".coupon-yellow").hide();
-          $(targetTag).find(".coupon-grey").show();
-          $(targetTag).unbind("click");
-        } else {
-          stampAsClosed(targetTag, false);
-        }
       } else {
         stampAsClosed(targetTag, false);
       }
-
-      // console.log("%c-------------------------", "color: #ff0000;")
+    } else {
+      stampAsClosed(targetTag, false);
     }
+
+    // console.log("%c-------------------------", "color: #ff0000;")
   }
+
 }
 
 function displayJsonTable(id, colNames, obj) {

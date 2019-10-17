@@ -56,9 +56,10 @@ function parseDtmStrtoDate(DtmStr) {
 
 function lastTimeOfTheDay(date) {
   var lastTime = "" +
-    date.getFullYear() +
-    (date.getMonth() + 1) +
+    date.getFullYear() + "-" +
+    (date.getMonth() + 1) + "-" +
     date.getDate() + " 23:59:59";
+  // console.log(lastTime)
   return new Date(lastTime);
 }
 
