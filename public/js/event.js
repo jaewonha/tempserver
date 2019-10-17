@@ -3,7 +3,11 @@ var gMbrNo = "MBR00000000000001512";
 var gEntNo = "ENT00000000000001181";
 var gStrCd = "s00";
 var gMainBtn;
-	
+
+var issuedCoupons = [];
+var myEvents = [];
+var allCoupons = [];
+
 function setMainButton(enabled, text) {
 	$(gMainBtn).prop('disabled', !enabled);
 	$(gMainBtn).text(text);
@@ -12,11 +16,19 @@ function setMainButton(enabled, text) {
 function setStpCnt(stpCnt) {
 	console.log('setStpCnt:', stpCnt);
 	$('#stepCount').text(stpCnt);
-	$('#gauage').text(stpCnt/40000);
 }
 
 function getStpCnt(stpCnt) {
 	return $('#stepCount').text();
+}
+
+function getCoupon() {
+	var stpCnt = parseInt(getStpCnt());
+	var successSteps = getSuccessSteps(stpCnt);
+	var foundItem = guagePoints.find(function (item, index) {
+		return successSteps === item.steps;
+	});
+	requestCoupon(successSteps, foundItem.cpnTyp);
 }
 
 function loadUserInfo () {
@@ -76,4 +88,34 @@ $(document).ready(function(){
 	$("#curDate").text(yymmdd(getToday()));
 
 	console.log('getToday():', getToday());
+
+	// stepCount 업데이트시 UI 업데이트
+	$("#stepCount").bind("DOMSubtreeModified", function () {
+		var stpCnt = $(this).text();
+
+		updateStepsUI(stpCnt);
+		updateProgress(stpCnt);
+		updateGettingCouponArea(stpCnt);
+	});
+
+	$("#got-my-events-count").bind("DOMSubtreeModified", function () {
+		if ($(this).val() === $("#got-received-coupons-count").val() === $("#got-all-coupons-count").val()) {
+			updateCoupons();
+		}
+	});
+
+	$("#got-received-coupons-count").bind("DOMSubtreeModified", function () {
+		if ($(this).val() === $("#got-my-events-count").val() === $("#got-all-coupons-count").val()) {
+			updateCoupons();
+		}
+	});
+
+	$("#got-all-coupons-count").bind("DOMSubtreeModified", function () {
+		if ($(this).val() === $("#got-my-events-count").val() === $("#got-received-coupons-count").val()) {
+			updateCoupons();
+		}
+	});
+
+	setEventListners();
+	updateCoupons();
 });

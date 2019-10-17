@@ -54,6 +54,13 @@ function parseDtmStrtoDate(DtmStr) {
 	return date;
 }
 
+function lastTimeOfTheDay(date) {
+  var lastTime = "" +
+    date.getFullYear() +
+    (date.getMonth() + 1) +
+    date.getDate() + " 23:59:59";
+  return new Date(lastTime);
+}
 
 function displayJsonTable(id, colNames, obj) {
 	var text = '';

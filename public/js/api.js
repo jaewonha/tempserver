@@ -118,6 +118,9 @@ function couponStatus() {
 		//var resStr = JSON.stringify(res, null, 2); 
 		//$('#couponStatus').text(resStr);
 		displayJsonTable('#couponStatus', ['cpnNo','cpnTyp','mbrNo'], res.result);
+		allCoupons = res.result;
+		var cnt = parseInt($("#got-all-coupons-count").val()) + 1;
+		$("#got-all-coupons-count").val(cnt);
 	});	
 }
 
@@ -148,7 +151,20 @@ function loadMyInfo() {
 		"mbrNo":gMbrNo,
 		"entNo":gEntNo
 	}, (res) => {
+		if (res.issuedCoupons.length > 0) {
+			$("#button-coupon-check-disabled").hide();
+			$("#button-coupon-check").show();
+		} else {
+			$("#button-coupon-check-disabled").show();
+			$("#button-coupon-check").hide();
+		}
 		displayJsonTable('#myCoupons', ['cpnNo', 'cpnTyp', 'issueDtm', 'mbrNo'], res.issuedCoupons);
+
+		var cnt = parseInt($("#got-received-coupons-count").text()) + 1;
+		$("#got-received-coupons-count").text(cnt);
+		// updateCoupons(res.issuedCoupons);
+
+		issuedCoupons = res.issuedCoupons;
 	});	 	
 	
 	API('/pedometer/my-event', 'get', {
@@ -169,26 +185,68 @@ function loadMyInfo() {
 		//alert('my-event:' + JSON.stringify(res));
 		
 		if(applicableStatus=='applicable') {
-			setMainButton(true, '이벤트 지원하기'); 
+			setMainButton(true, '이벤트 지원하기');
+
+			$("#button-start").show();
+			$("#button-ing").hide();
+			$("#button-done").hide();
+
 			$("#curEventInfo").hide();
+
 		} else if (applicableStatus==('todayParticipating')) {
-			setMainButton(false, '이벤트가 진행중입니다'); 
+			setMainButton(false, '이벤트가 진행중입니다');
+
+			$("#button-start").hide();
+			$("#button-ing").show();
+			$("#button-done").hide();
+
 			$("#curEventInfo").show();
 			startCountDown(participatingEvent.startDtm, '#timeCounter'); //getTime () ~ 24hours
+
+			$("#button-start").show();
+			$("#button-ing").hide();
+			$("#button-done").hide();
+
 		} else if (applicableStatus==('todayFinishded')) {
-			setMainButton(false, '오늘 이벤트에 참여하셨습니다'); 
+			setMainButton(false, '오늘 이벤트에 참여하셨습니다');
+
+			$("#button-start").show();
+			$("#button-ing").hide();
+			$("#button-done").hide();
+
 			$("#curEventInfo").hide();
-		} 
-		else if(applicableStatus==('allParticipated')) {
-			setMainButton(false, '이벤트에 모두 참여하셨습니다'); 
+
+		} else if(applicableStatus==('allParticipated')) {
+			setMainButton(false, '이벤트에 모두 참여하셨습니다');
+
+			$("#button-start").hide();
+			$("#button-ing").hide();
+			$("#button-done").show();
+
 			$("#curEventInfo").hide();
+
 		} else {
 			alert('알 수 없는 오류:applicableStatus:' + applicableStatus)
 		}
 
-		$('#attendCount').text(res.myPedometerEvent.length); //참여횟수
-		//var resStr = JSON.stringify(res.myPedometerEvent, null, 2);
+		var myEventsSorted = res.myPedometerEvent.sort(function (a, b) {
+			return a.startDtm < b.startDtm ? -1 : a.startDtm > b.startDtm ? 1 : 0;
+		});
+
+		$('#attendCount').text(myEventsSorted.length); //참여횟수
+
+		if (myEventsSorted.length < 2) {
+			$("#round-2").hide();
+		} else {
+			$("#round-2").show();
+		}
+		//var resStr = JSON.stringify(myEventsSorted, null, 2);
 		//document.getElementById('history').innerText = resStr;
-		displayJsonTable('#history', ['startDtm', 'mbrNo', 'stpCnt'], res.myPedometerEvent);
-	});	 	
+		displayJsonTable('#history', ['startDtm', 'mbrNo', 'stpCnt'], myEventsSorted);
+
+		var cnt = parseInt($("#got-my-events-count").text()) + 1;
+		$("#got-my-events-count").text(cnt);
+
+		myEvents = myEventsSorted;
+	});
 }
