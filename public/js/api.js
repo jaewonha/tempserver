@@ -76,7 +76,10 @@ function requestCoupon(stpCnt, cpnTyp) {
 		if(failed) {
 			alert('[failed]' + res.result)
 		} else {
-			alert('쿠폰 [' + cpnTyp + '/' +stpCnt + '] 지원:' + resStr);
+			let issuedCoupon = res.result.issuedCoupon;
+			//alert('쿠폰 [' + cpnTyp + '/' +stpCnt + '] 지원:' + resStr);
+			alert('쿠폰을 발급하였습니다(No:'+issuedCoupon.cpnNo+').\n 쿠폰함에서 확인하세요');
+			if(isAndroid()) Pedometer.registerCoupon(issuedCoupon.cpnNo);
 			refresh(); 
 		}
 	});	 	
