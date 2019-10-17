@@ -135,8 +135,15 @@ function updateProgress(steps) {
   });
   // console.log(foundItem);
 
-  var sizePercent = foundItem.percent;
-  var sizeSteps = foundItem.steps;
+  var sizePercent;
+  var sizeSteps;
+  if (!foundItem) {
+    sizePercent = guagePoints[4].percent;
+    sizeSteps = guagePoints[4].steps;
+  } else {
+    sizePercent = foundItem.percent;
+    sizeSteps = foundItem.steps;
+  }
   var previousPointSteps = 0;
   var previousPointPercent = 0;
   if (idx > 0) {
