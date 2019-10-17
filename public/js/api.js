@@ -163,8 +163,8 @@ function loadMyInfo() {
 			$("#button-coupon-check-disabled").hide();
 			$("#button-coupon-check").show();
 		} else {
-			$("#button-coupon-check-disabled").show();
-			$("#button-coupon-check").hide();
+			$("#button-coupon-check-disabled").hide();
+			$("#button-coupon-check").show();
 		}
 		displayJsonTable('#myCoupons', ['cpnNo', 'cpnTyp', 'issueDtm', 'mbrNo'], res.issuedCoupons);
 

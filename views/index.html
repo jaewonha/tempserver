@@ -85,27 +85,27 @@
 			</a>
 		</div>
 
-		<div id="buttons" class="buttons-mobile" style="display: none;">
+		<div id="buttons" class="buttons-mobile">
 			<div id="button-one">
-				<div id="button-start" style="padding-top: 5vw;">
+				<div id="button-start" style="padding-top: 4vw;">
 					<button id="btnApply-mobile" class="btn-lotte btn-start ripple">START</button>
 				</div>
-				<div id="button-ing" style="padding-top: 5vw;">
+				<div id="button-ing" style="padding-top: 4vw;">
 					<button class="btn-lotte btn-grey">이벤트 진행중</button>
 				</div>
-				<div id="button-done" style="padding-top: 5vw;">
+				<div id="button-done" style="padding-top: 4vw;">
 					<button class="btn-lotte btn-grey">이벤트 종료</button>
 				</div>
-				<div id="get-coupon-wrapper" class="get-coupon-wrapper-mobile" style="display: none;">
+				<div id="get-coupon-wrapper" class="get-coupon-wrapper-mobile">
 					<div style="position: absolute; top: 6.1vw; left: -13vw; right: -13vw; background-color: #e82e73; height: 50vw;">
 						<div style="position: absolute; left: 13vw; right: 13vw; bottom: -7vw;">
 							<button class="btn-lotte btn-black ripple" id="btnRequestCoupon" onClick="openCouponModal()">쿠폰 받기</button>
 						</div>
 					</div>
-					<div style="position: relative;">
-						<img src="http://10.12.21.57:3000/img/success-header.png" alt="" style="width: 40vw;">
-						<div class="success-steps">&nbsp;&nbsp;<span id="successCount">0</span>보 달성!</div>
-					</div>
+<!--					<div style="position: relative;">-->
+<!--						<img src="http://10.12.21.57:3000/img/success-header.png" alt="" style="width: 40vw;">-->
+<!--						<div class="success-steps">&nbsp;&nbsp;<span id="successCount">0</span>보 달성!</div>-->
+<!--					</div>-->
 					<div style="position: absolute; top: 15vw; left: 0; right: 0;">
 						<div style="color: #ffffff; font-size: 3.5vw; padding-bottom: 1.5vw; position: relative;">
 							쿠폰 수령 가능 시간이
@@ -152,18 +152,25 @@
 
 			</div>
 			<div id="button-two">
-				<div id="button-coupon-check-disabled" style="padding-top: 5vw;">
+				<div id="button-coupon-check-disabled" style="padding-top: 4vw; display: none;">
 					<button class="btn-lotte btn-grey">쿠폰현황확인</button>
 				</div>
-				<div id="button-coupon-check" style="padding-top: 5vw;">
+				<div id="button-coupon-check" style="padding-top: 4vw;">
 					<button class="btn-lotte btn-blue ripple" id="btnCouponStatus" onClick="openCouponModal()">쿠폰현황확인</button>
 				</div>
 			</div>
 
 
 		</div>
-		<div style="background-color: #ffffff; padding-top: 10%;">
-			<img src="http://10.12.21.57:3000/img/stepper_last_desc.png" alt="" style="width: 90%;">
+		<div style="background-color: #ffffff; padding-top: 10%; font-family: 'Arial'; ">
+			롯데백화점에서 더 신나게 더 건강하게~<br>
+			롯데백화점은 창립 40주년을 맞이하여<br>
+			전국민 건강프로젝트인<br>
+			<span>#MAKE ME MOVE</span> 이벤트를 진행합니다.<br>
+			<br>
+			남녀노소 누구나 쉽게 할 수 있는 생활 운동의 기본!<br>
+			&lt;걷기 운동&gt;을 전국 롯데백화점에서 함께해요!<br>
+<!--			<img src="http://10.12.21.57:3000/img/stepper_last_desc.png" alt="" style="width: 90%;">-->
 		</div>
 		<div style="background-color: #ffffff; padding-bottom: 10%;"></div>
 	</div>
@@ -223,7 +230,7 @@
 					</div>
 					<div id="round-1">
 						<div style="color: #ffffff; text-align: left; font-size: 17px; font-weight: bold;">
-							1차: 총 <span id="stepCountFirst">0</span>걸음
+							총 <span id="stepCountFirst">0</span>걸음<button onclick="addStpCnt(1)">++</button>
 						</div>
 						<div id="coupon1_4000" class="coupon-item">
 							<div style="position: relative;">
@@ -302,114 +309,6 @@
 						</div>
 
 						<div id="coupon1_40000" class="coupon-item">
-							<div style="position: relative;">
-								<img src="http://10.12.21.57:3000/img/coupon_bg_left_white.png" alt="" style="flex:1;">
-								<div class="coupon-img-area" class="coupon-img-area">
-									<div class="coupon40000">
-										<img src="http://10.12.21.57:3000/img/coupon_40000.png" alt="" style="width: 52%;">
-									</div>
-								</div>
-							</div>
-							<div style="position: relative;">
-								<div class="coupon-right-area">
-									<img class="coupon-yellow" src="http://10.12.21.57:3000/img/coupon_bg_right_yellow.png" alt="" style="flex: 1; display: none;">
-									<img class="coupon-grey" src="http://10.12.21.57:3000/img/coupon_bg_right_grey.png" alt="" style="flex: 1;">
-								</div>
-								<div class="coupon-right-icon-area">
-									<img class="coupon-unlocked" src="http://10.12.21.57:3000/img/coupon_v.png" alt="" style="width: 40%; display: none;">
-									<img class="coupon-locked" src="http://10.12.21.57:3000/img/coupon_lock.png" alt="" style="width: 40%;">
-								</div>
-							</div>
-							<img class="closed-coupon-bg" src="http://10.12.21.57:3000/img/coupon_overlay_dark.png" alt="" style="position: absolute; top: 0; left: 0; right: 0; display: none">
-							<div class="closed-coupon-stamp" style="display: none;">
-								<img src="http://10.12.21.57:3000/img/coupon_closed.png" alt="" style="width: 50%;">
-							</div>
-						</div>
-					</div>
-					<div id="round-2" style="padding-top: 6%; display: none;">
-						<div style="padding-bottom: 6%;">
-							<img src="http://10.12.21.57:3000/img/coupon_separator.png" alt="" style="width: 95%;">
-						</div>
-						<div style="color: #ffffff; text-align: left; font-size: 17px; font-weight: bold;">
-							2차: 총 <span id="stepCountSecond">0</span>걸음
-						</div>
-						<div id="coupon2_4000" class="coupon-item">
-							<div style="position: relative;">
-								<img src="http://10.12.21.57:3000/img/coupon_bg_left_white.png" alt="" style="flex:1;">
-								<div class="coupon-img-area" class="coupon-img-area">
-									<div class="coupon4000">
-										<img src="http://10.12.21.57:3000/img/coupon_4000.png" alt="" style="width: 52%;">
-									</div>
-								</div>
-							</div>
-							<div style="position: relative;">
-								<div class="coupon-right-area">
-									<img class="coupon-yellow" src="http://10.12.21.57:3000/img/coupon_bg_right_yellow.png" alt="" style="flex: 1; display: none;">
-									<img class="coupon-grey" src="http://10.12.21.57:3000/img/coupon_bg_right_grey.png" alt="" style="flex: 1;">
-								</div>
-								<div class="coupon-right-icon-area">
-									<img class="coupon-unlocked" src="http://10.12.21.57:3000/img/coupon_v.png" alt="" style="width: 40%; display: none;">
-									<img class="coupon-locked" src="http://10.12.21.57:3000/img/coupon_lock.png" alt="" style="width: 40%;">
-								</div>
-							</div>
-							<img class="closed-coupon-bg" src="http://10.12.21.57:3000/img/coupon_overlay_dark.png" alt="" style="position: absolute; top: 0; left: 0; right: 0; display: none">
-							<div class="closed-coupon-stamp" style="display: none;">
-								<img src="http://10.12.21.57:3000/img/coupon_closed.png" alt="" style="width: 50%;">
-							</div>
-						</div>
-
-						<div id="coupon2_10000" class="coupon-item">
-							<div style="position: relative;">
-								<img src="http://10.12.21.57:3000/img/coupon_bg_left_white.png" alt="" style="flex:1;">
-								<div class="coupon-img-area" class="coupon-img-area">
-									<div class="coupon10000">
-										<img src="http://10.12.21.57:3000/img/coupon_10000.png" alt="" style="width: 50%;">
-									</div>
-								</div>
-							</div>
-							<div style="position: relative;">
-								<div class="coupon-right-area">
-									<img class="coupon-yellow" src="http://10.12.21.57:3000/img/coupon_bg_right_yellow.png" alt="" style="flex: 1; display: none;">
-									<img class="coupon-grey" src="http://10.12.21.57:3000/img/coupon_bg_right_grey.png" alt="" style="flex: 1;">
-								</div>
-								<div class="coupon-right-icon-area">
-									<img class="coupon-unlocked" src="http://10.12.21.57:3000/img/coupon_v.png" alt="" style="width: 40%; display: none;">
-									<img class="coupon-locked" src="http://10.12.21.57:3000/img/coupon_lock.png" alt="" style="width: 40%;">
-								</div>
-							</div>
-							<img class="closed-coupon-bg" src="http://10.12.21.57:3000/img/coupon_overlay_dark.png" alt="" style="position: absolute; top: 0; left: 0; right: 0; display: none">
-							<div class="closed-coupon-stamp" style="display: none;">
-								<img src="http://10.12.21.57:3000/img/coupon_closed.png" alt="" style="width: 50%;">
-							</div>
-						</div>
-
-						<div id="coupon2_15000" class="coupon-item">
-							<div style="position: relative;">
-								<img src="http://10.12.21.57:3000/img/coupon_bg_left_white.png" alt="" style="flex:1;">
-								<div class="coupon-img-area" class="coupon-img-area">
-									<div class="coupon15000">
-										<img src="http://10.12.21.57:3000/img/coupon_15000.png" alt="" style="width: 59%;">
-										<img src="http://10.12.21.57:3000/img/coupon_15000_desc.png" alt="" style="width: 70%; padding-top: 3%;">
-									</div>
-								</div>
-							</div>
-							<div style="position: relative;">
-								<div class="coupon-right-area">
-									<img class="coupon-yellow" src="http://10.12.21.57:3000/img/coupon_bg_right_yellow.png" alt="" style="flex: 1; display: none;">
-									<img class="coupon-grey" src="http://10.12.21.57:3000/img/coupon_bg_right_grey.png" alt="" style="flex: 1;">
-								</div>
-								<div class="coupon-right-icon-area">
-									<img class="coupon-unlocked" src="http://10.12.21.57:3000/img/coupon_v.png" alt="" style="width: 40%; display: none;">
-									<img class="coupon-locked" src="http://10.12.21.57:3000/img/coupon_lock.png" alt="" style="width: 40%;">
-								</div>
-							</div>
-							<img class="closed-coupon-bg" src="http://10.12.21.57:3000/img/coupon_overlay_dark.png" alt="" style="position: absolute; top: 0; left: 0; right: 0; display: none">
-							<div class="closed-coupon-stamp" style="display: none;">
-								<img src="http://10.12.21.57:3000/img/coupon_closed.png" alt="" style="width: 50%;">
-							</div>
-						</div>
-
-						<div id="coupon2_40000" class="coupon-item">
 							<div style="position: relative;">
 								<img src="http://10.12.21.57:3000/img/coupon_bg_left_white.png" alt="" style="flex:1;">
 								<div class="coupon-img-area" class="coupon-img-area">

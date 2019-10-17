@@ -38,6 +38,13 @@ function getStpCnt(stpCnt) {
 	return $('#stepCount').text();
 }
 
+// for test
+function addStpCnt(num) {
+	var a = parseInt(getStpCnt());
+	var b = a + num;
+	setStpCnt(b);
+}
+
 function getCoupon() {
 	var stpCnt = parseInt(getStpCnt());
 	var successSteps = getSuccessSteps(stpCnt);
