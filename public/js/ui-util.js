@@ -168,10 +168,10 @@ function getSuccessSteps(stpCnt) {
 
 function updateGettingCouponArea(stpCnt) {
   if (stpCnt < guagePoints[0].steps) {
-    $("#get-coupon-wrapper-mobile").hide();
+    $("#get-coupon-wrapper").hide();
     return;
   }
-  $("#get-coupon-wrapper-mobile").show();
+  $("#get-coupon-wrapper").show();
 
   var currentDate = new Date();
   var lastTimeOfToday = lastTimeOfTheDay(currentDate);
