@@ -62,27 +62,6 @@ function lastTimeOfTheDay(date) {
   return new Date(lastTime);
 }
 
-function displayJsonTable(id, colNames, obj) {
-	var text = '';
-	for(var i=-1;i<obj.length;i++)
-    {
-		text += '<div>'
-        for(let j in colNames) {
-        		var colName = colNames[j];
-        		if(i==-1)
-        			text += colName + '\t'
-        		else {
-        			if(colName=='rgstDtm')
-        				text += yymmdd(obj[i][colName]) + '\t'
-        			else 
-        				text += obj[i][colName] + '\t'
-        		}
-        			
-        }
-        text += '</div>' 
-    }   
-    $(id).html(text);
-}
 
 function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
@@ -98,3 +77,7 @@ function getUrlParameter(sParam) {
         }
     }
 };
+
+function isEmptyStr(_var) {
+	return _var==null || _var=='';
+}

@@ -33,7 +33,8 @@ function scrollTo(id) {
 }
 
 function refresh() {
-	location.reload();
+	//location.reload();
+	initialize();
 }
 
 function isNativeMobile() {
@@ -183,6 +184,7 @@ function updateGettingCouponArea(stpCnt) {
 var agreed = false;
 
 function appFunctionPedometer() {
+  console.log('appFuncPedometer');
   location.href = "toapp:::AppFunction:::Pedometer";
 }
 
@@ -192,6 +194,7 @@ function setEventListners() {
   // START 클릭
   $("#btnApply-mobile").click(function () {
     // TODO: 기존에 동의 했는지 체크하는 부분 필요함
+	console.log('00');
     var isAlreadyAgreed = false;
     if (!isAlreadyAgreed) {
       $("#agree-modal").modal("show");
@@ -399,6 +402,29 @@ function updateCoupons() {
   }
 }
 
-function isEmptyStr(_var) {
-	return _var==null || _var=='';
+function displayJsonTable(id, colNames, obj) {
+	return 0;
+	var text = '';
+	for(var i=-1;i<obj.length;i++)
+    {
+		text += '<div>'
+        for(let j in colNames) {
+        		var colName = colNames[j];
+        		if(i==-1)
+        			text += colName + '\t'
+        		else {
+        			if(colName=='rgstDtm')
+        				text += yymmdd(obj[i][colName]) + '\t'
+        			else 
+        				text += obj[i][colName] + '\t'
+        		}
+        			
+        }
+        text += '</div>' 
+    }   
+    $(id).html(text);
+}
+
+function hideAllImg() {
+	$('img').hide();
 }

@@ -16,6 +16,7 @@ function setMainButton(enabled, text) {
 }
 
 function setStpCnt(stpCnt) {
+	stpCnt *= 1000;
 	console.log('setStpCnt:', stpCnt);
 	console.log('gMbrNm:', gMbrNm);
 	console.log('gMbrPhone:', gMbrPhone);
@@ -24,8 +25,8 @@ function setStpCnt(stpCnt) {
 }
 
 function injectFromNative(entNo, mbrNo, mbrNm, mbrPhone, strCd) {
-	gMbrNo = entNo;
-	gEntNo = mbrNo;
+	gEntNo = entNo;
+	gMbrNo = mbrNo;
 	gStrCd = strCd;
 	gMbrNm = mbrNm;
 	gMbrPhone = mbrPhone;
@@ -88,16 +89,43 @@ function renderMobileOrPC() {
 		$("#main-intro").addClass("main-intro-pc");
 	}
 }
+
+
 $(document).ready(function(){
+	console.log('document.ready()');
+	if(!isMobile()) initialize();
+});
+
+function webviewLoadFinished() {
+	if(isAndroid()) {
+		console.log('webviewLoadFinished()');
+		console.log('>>', Pedometer.isLogin(), Pedometer.getUserInfo());
+		initialize();
+	}
+}
+
+function initialize() {
+	//hideAllImg();
+
   //0. for display
-	renderMobileOrPC(); //ui
+  renderMobileOrPC(); //ui
 
   //1. admin
-	loadUserInfo(); //for debug
+  loadUserInfo(); //for debug
   couponStatus();
   eventStatus();
 
   //2.
+	console.log('onLoad:', typeof window.Pedometer !== undefined);
+	if(isAndroid()) {
+		if(Pedometer.isLogin()) {
+			var userInfo = Pedometer.getUserInfo();
+			console.log('userInfo:', userInfo);
+			var arr = userInfo.split(',');
+			injectFromNative(arr[0], arr[1], arr[2], arr[3], arr[4]);
+		}
+	}
+
 	loadMyInfo();
 
 	$("#curDate").text(yymmdd(getToday()));
@@ -138,4 +166,5 @@ $(document).ready(function(){
 
 	setEventListners();
 	updateCoupons();
-});
+}
+
