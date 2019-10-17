@@ -16,7 +16,7 @@ function setMainButton(enabled, text) {
 }
 
 function setStpCnt(stpCnt) {
-	stpCnt *= 1000;
+	stpCnt *= 100;
 	console.log('setStpCnt:', stpCnt);
 	console.log('gMbrNm:', gMbrNm);
 	console.log('gMbrPhone:', gMbrPhone);
