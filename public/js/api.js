@@ -3,7 +3,9 @@ function getTokenVal() {
 }
 
 function API(endpoint, method, param, callback) {
-	var BASE_URL='http://10.12.21.58:8080';
+	//var BASE_URL='http://10.12.21.58:8080';
+	//var BASE_URL='http://10.44.1.14:8110';
+	var BASE_URL=''
 
 	var queryString = method=='get'  ? '?' + $.param(param)  : '';
 	var bodyString  = method=='post' ? JSON.stringify(param) : null;
@@ -20,10 +22,12 @@ function API(endpoint, method, param, callback) {
 	  },
 	  body: bodyString
 	}).then(res => res.json())
-	  .then(res => callback(res));
+	  .then(res => callback(res))
+	  .catch(e=> console.log('api error:', e));
 }
 
 function applyEvent() {
+	console.log('aaaaaaa');
 	let param = {
 		"entNo":gEntNo,
 		"mbrNo":gMbrNo,
@@ -34,6 +38,7 @@ function applyEvent() {
 	API('/pedometer/apply-event', 'post', param, (res) => {
 		//var resStr = JSON.stringify(res); 
 		//document.getElementById('history').innerText=resStr;
+		console.log('>>>####', res);
 		let failed = res.result.includes('fail');
 		if(failed) {
 			alert('[failed]' + res.result)

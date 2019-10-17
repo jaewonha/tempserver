@@ -199,7 +199,7 @@ function setEventListners() {
     }
     appFunctionPedometer();
   });
-  
+
   // 약관 동의 체크박스
   $("#agree-check-button-area").click(function () {
     $("#agree-check-button-marker").show();
@@ -393,4 +393,8 @@ function updateCoupons() {
       // console.log("%c-------------------------", "color: #ff0000;")
     }
   }
+}
+
+function isEmptyStr(_var) {
+	return _var==null || _var=='';
 }
