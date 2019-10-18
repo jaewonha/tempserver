@@ -22,6 +22,10 @@ function API(endpoint, method, param, callback) {
 	  },
 	  body: bodyString
 	}).then(res => res.json())
+		.then(res => {
+			console.log("%cEndPoint: " + endpoint + " | res: " + JSON.stringify(res), "color: lightblue;");
+			return res;
+		})
 	  .then(res => callback(res))
 	  .catch(e=> console.log('api error:', e));
 }
@@ -45,8 +49,6 @@ function applyEvent() {
 			//alert('이벤트에 지원하였습니다');
 			//kickPedometerUpdaet(param.startDtm);
 			alert('이벤트에 지원하였습니다:injectIntoApp:param.startDtm:' + param.startDtm);
-			if(isIOS())
-			 	webkit.messageHandlers.injectIntoApp.postMessage(param);
 
 			refresh();
 		}
@@ -69,17 +71,22 @@ function requestCoupon(stpCnt, cpnTyp) {
 	}
 	
 	API('/pedometer/request-coupon', 'post', param, (res) => {
-		var resStr = JSON.stringify(res); 
+		var resStr = JSON.stringify(res);
 		//document.getElementById('history').innerText=resStr;
 		let failed = res.result.includes('fail');
 		if(failed) {
+			console.log("failed", failed)
 			alert('[failed]' + res.result)
 		} else {
-			let issuedCoupon = res.result.issuedCoupon;
+			let issuedCoupon = res.issuedCoupon;
 			//alert('쿠폰 [' + cpnTyp + '/' +stpCnt + '] 지원:' + resStr);
+			console.log("1", issuedCoupon)
 			alert('쿠폰을 발급하였습니다(No:'+issuedCoupon.cpnNo+').\n 쿠폰함에서 확인하세요');
+			console.log("2")
 			if(isAndroid()) Pedometer.registerCoupon(issuedCoupon.cpnNo);
-			refresh(); 
+			console.log("3")
+			refresh();
+			console.log("4")
 		}
 	});	 	
 }
@@ -128,7 +135,8 @@ function couponStatus() {
 		allCoupons = res.result;
 		var cnt = parseInt($("#got-all-coupons-count").val()) + 1;
 		$("#got-all-coupons-count").val(cnt);
-	});	
+		updateCoupons();
+	});
 }
 
 function finalizeSteps() {
@@ -172,7 +180,8 @@ function loadMyInfo() {
 		// updateCoupons(res.issuedCoupons);
 
 		issuedCoupons = res.issuedCoupons;
-	});	 	
+		updateCoupons();
+	});
 	
 	API('/pedometer/my-event', 'get', {
 		"mbrNo":gMbrNo,
@@ -189,8 +198,8 @@ function loadMyInfo() {
 		*/
 		var participatingEvent = res.participatingEvent;
 		console.log('my-event:',res);
-		//alert('my-event:' + JSON.stringify(res));
-		
+		// alert('my-event:' + JSON.stringify(res));
+
 		if(applicableStatus=='applicable') {
 			// setMainButton(true, '이벤트 지원하기');
 

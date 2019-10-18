@@ -21,9 +21,10 @@
 	  <script type="text/javascript" src="http://10.12.21.57:3000/js/event.js"></script>
 
 	<script>
-	// function scrollToCoupon() {
-	//     document.getElementById('couponStatusAndRequest').scrollIntoView();
-	// }
+	function scrollToCoupon() {
+		document.getElementById('buttons').scrollIntoView();
+	    // document.getElementById('couponStatusAndRequest').scrollIntoView();
+	}
 
 	function openCouponModal() {
 		$("#coupons-modal").modal('show');
@@ -34,9 +35,9 @@
 
 
   <body>
-	<div id="header-top" class="header-top-mobile">
-		<img src="http://10.12.21.57:3000/img/header.png">
-	</div>
+<!--	<div id="header-top" class="header-top-mobile">-->
+<!--		<img src="http://10.12.21.57:3000/img/header.png">-->
+<!--	</div>-->
 	<div id="main-intro" class="main-intro-mobile">
 		<img src="http://10.12.21.57:3000/img/main-intro.png">
 	</div>
@@ -107,7 +108,7 @@
 <!--						<div class="success-steps">&nbsp;&nbsp;<span id="successCount">0</span>보 달성!</div>-->
 <!--					</div>-->
 					<div style="position: absolute; top: 15vw; left: 0; right: 0;">
-						<div style="color: #ffffff; font-size: 3.5vw; padding-bottom: 1.5vw; position: relative;">
+						<div style="color: #ffffff; font-size: 5vw; font-weight: bold; padding-bottom: 1.5vw; position: relative;">
 							쿠폰 수령 가능 시간이
 							<img src="http://10.12.21.57:3000/img/left-time-icon.png" alt="" style="position: absolute; top: 3vw; right: -1vw; width: 6vw;">
 						</div>
@@ -143,7 +144,7 @@
 								<div class="left-time-number" id="second1">0</div>
 							</div>
 						</div>
-						<div style="color: #ffffff; font-size: 3.5vw; padding-top: 1vw; ">
+						<div style="color: #ffffff; font-size: 5vw; padding-top: 1vw; ">
 							남았습니다.
 						</div>
 					</div>
@@ -207,7 +208,7 @@
 <!--	</button>-->
 
 	<div class="modal" id="coupons-modal">
-		<div class="modal-dialog-center" style="padding: 10px;">
+		<div class="modal-dialog" style="padding: 10px;">
 			<div class="modal-content">
 
 				<!-- Modal Header -->
@@ -344,7 +345,7 @@
 
 	<!-- 사용자 동의 팝업 - Modal -->
 	<div class="modal" id="agree-modal">
-		<div class="modal-dialog-center" style="padding: 10px;">
+		<div class="modal-dialog" style="padding: 10px;">
 			<div class="modal-content">
 				<div class="modal-header" style="padding: 4px;">
 					<h4 class="modal-title"></h4>
@@ -359,7 +360,10 @@
 						</div>
 						<div style="padding-top: 10px; position: relative;">
 							<img src="http://10.12.21.57:3000/img/agree_tos.png">
-							<div style="position: absolute; top: 21%; left: 2%; right: 4%; bottom: 15%; font-size: 8px; overflow-y: auto; text-align: left;">어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고어쩌고 저쩌고</div>
+							<div style="position: absolute; top: 21%; left: 2%; right: 4%; bottom: 15%; font-size: 8px; overflow-y: auto; text-align: left;">
+								1. 수탁사 : ㈜시너지21<br>
+								2. 목적 : 이벤트 쿠폰 발송 및 관리
+							</div>
 						</div>
 						<div style="text-align: left; padding-top: 3%;">
 							<img src="http://10.12.21.57:3000/img/agree_desc.png" style="width: 75%;">
@@ -384,7 +388,7 @@
 
 	<!-- 이벤트 안내 팝업 - Modal -->
 	<div class="modal" id="event-intro-modal">
-		<div class="modal-dialog-center" style="padding: 10px;">
+		<div class="modal-dialog" style="padding: 10px;">
 			<div class="modal-content">
 				<div class="modal-body" style="padding: 0; position: relative;">
 					<div style="background-color: #ffffff; padding-top: 12.8%;">
