@@ -83,7 +83,7 @@ function requestCoupon(stpCnt, cpnTyp) {
 			console.log("1", issuedCoupon)
 			alert('쿠폰을 발급하였습니다(No:'+issuedCoupon.cpnNo+').\n 쿠폰함에서 확인하세요');
 			console.log("2")
-			if(isAndroid()) Pedometer.registerCoupon(issuedCoupon.cpnNo);
+			// if(isAndroid()) Pedometer.registerCoupon(issuedCoupon.cpnNo);
 			console.log("3")
 			refresh();
 			console.log("4")
