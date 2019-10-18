@@ -383,7 +383,7 @@ h4 {
     transition: 0s;
 }
 
-.modal-dialog {
+.modal.show .modal-dialog {
     -webkit-transform: translate(0,-50%);
     -o-transform: translate(0,-50%);
     transform: translate(0,-50%);
