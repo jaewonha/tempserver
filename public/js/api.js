@@ -22,6 +22,10 @@ function API(endpoint, method, param, callback) {
 	  },
 	  body: bodyString
 	}).then(res => res.json())
+		.then(res => {
+			console.log("%cEndPoint: " + endpoint + " | res: " + JSON.stringify(res), "color: lightblue;");
+			return res;
+		})
 	  .then(res => callback(res))
 	  .catch(e=> console.log('api error:', e));
 }
@@ -69,17 +73,22 @@ function requestCoupon(stpCnt, cpnTyp) {
 	}
 	
 	API('/pedometer/request-coupon', 'post', param, (res) => {
-		var resStr = JSON.stringify(res); 
+		var resStr = JSON.stringify(res);
 		//document.getElementById('history').innerText=resStr;
 		let failed = res.result.includes('fail');
 		if(failed) {
+			console.log("failed", failed)
 			alert('[failed]' + res.result)
 		} else {
-			let issuedCoupon = res.result.issuedCoupon;
+			let issuedCoupon = res.issuedCoupon;
 			//alert('쿠폰 [' + cpnTyp + '/' +stpCnt + '] 지원:' + resStr);
+			console.log("1", issuedCoupon)
 			alert('쿠폰을 발급하였습니다(No:'+issuedCoupon.cpnNo+').\n 쿠폰함에서 확인하세요');
+			console.log("2")
 			if(isAndroid()) Pedometer.registerCoupon(issuedCoupon.cpnNo);
-			refresh(); 
+			console.log("3")
+			refresh();
+			console.log("4")
 		}
 	});	 	
 }

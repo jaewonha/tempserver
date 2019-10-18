@@ -85,6 +85,7 @@ function renderMobileOrPC() {
 		$("#event-1-header").addClass("event-1-header-mobile");
 		$("#event-1-header-img-wrapper").removeClass("event-1-header-img-wrapper-pc");
 		$("#event-1-header-img-wrapper").addClass("event-1-header-img-wrapper-mobile");
+		$("#for-debug-area").show();
 
 	} else {
 		console.log("isMobile------------------------ NOT")
@@ -116,6 +117,24 @@ function renderMobileOrPC() {
 
 
 $(document).ready(function(){
+	$("#got-my-events-count").bind("DOMSubtreeModified", function () {
+		if ($(this).val() === $("#got-received-coupons-count").val() === $("#got-all-coupons-count").val()) {
+			updateCoupons();
+		}
+	});
+
+	$("#got-received-coupons-count").bind("DOMSubtreeModified", function () {
+		if ($(this).val() === $("#got-my-events-count").val() === $("#got-all-coupons-count").val()) {
+			updateCoupons();
+		}
+	});
+
+	$("#got-all-coupons-count").bind("DOMSubtreeModified", function () {
+		if ($(this).val() === $("#got-my-events-count").val() === $("#got-received-coupons-count").val()) {
+			updateCoupons();
+		}
+	});
+
 	console.log('document.ready()');
 	if(!isMobile()) _initialize();
 });
@@ -176,25 +195,6 @@ function _initialize() {
 		updateCoupons();
 	});
 
-	$("#got-my-events-count").bind("DOMSubtreeModified", function () {
-		if ($(this).val() === $("#got-received-coupons-count").val() === $("#got-all-coupons-count").val()) {
-			updateCoupons();
-		}
-	});
-
-	$("#got-received-coupons-count").bind("DOMSubtreeModified", function () {
-		if ($(this).val() === $("#got-my-events-count").val() === $("#got-all-coupons-count").val()) {
-			updateCoupons();
-		}
-	});
-
-	$("#got-all-coupons-count").bind("DOMSubtreeModified", function () {
-		if ($(this).val() === $("#got-my-events-count").val() === $("#got-received-coupons-count").val()) {
-			updateCoupons();
-		}
-	});
-
 	setEventListners();
 	updateCoupons();
 }
-
