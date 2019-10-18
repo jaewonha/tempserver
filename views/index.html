@@ -97,19 +97,9 @@
 				<div id="button-done" style="padding-top: 4vw;">
 					<button class="btn-lotte btn-grey">이벤트 종료</button>
 				</div>
-
-				<div id="button-two">
-					<div id="button-coupon-check-disabled" style="padding-top: 4vw; display: none;">
-						<button class="btn-lotte btn-grey">쿠폰현황확인</button>
-					</div>
-					<div id="button-coupon-check" style="padding-top: 4vw;">
-						<button class="btn-lotte btn-blue ripple" id="btnCouponStatus" onClick="openCouponModal()">쿠폰현황확인</button>
-					</div>
-				</div>
-
 				<div id="get-coupon-wrapper" class="get-coupon-wrapper-mobile">
 					<div style="position: absolute; top: 6.1vw; left: -13vw; right: -13vw; background-color: #e82e73; height: 50vw;">
-						<div style="position: absolute; left: 13vw; right: 13vw; bottom: -7vw; display: none;">
+						<div style="position: absolute; left: 13vw; right: 13vw; bottom: -7vw;">
 							<button class="btn-lotte btn-black ripple" id="btnRequestCoupon" onClick="openCouponModal()">쿠폰 받기</button>
 						</div>
 					</div>
@@ -117,7 +107,7 @@
 <!--						<img src="http://10.12.21.57:3000/img/success-header.png" alt="" style="width: 40vw;">-->
 <!--						<div class="success-steps">&nbsp;&nbsp;<span id="successCount">0</span>보 달성!</div>-->
 <!--					</div>-->
-					<div style="position: absolute; top: 14vw; left: 0; right: 0;">
+					<div style="position: absolute; top: 10vw; left: 0; right: 0;">
 						<div style="color: #ffffff; font-size: 5vw; font-weight: bold; padding-bottom: 1.5vw; position: relative;">
 							쿠폰 수령 가능 시간이
 							<img src="http://10.12.21.57:3000/img/left-time-icon.png" alt="" style="position: absolute; top: 3vw; right: -1vw; width: 6vw;">
@@ -162,10 +152,18 @@
 				</div>
 
 			</div>
+			<div id="button-two">
+				<div id="button-coupon-check-disabled" style="padding-top: 4vw; display: none;">
+					<button class="btn-lotte btn-grey">쿠폰현황확인</button>
+				</div>
+				<div id="button-coupon-check" style="padding-top: 4vw;">
+					<button class="btn-lotte btn-blue ripple" id="btnCouponStatus" onClick="openCouponModal()">쿠폰현황확인</button>
+				</div>
+			</div>
 
 
 		</div>
-		<div style="background-color: #ffffff;">
+		<div style="background-color: #ffffff; padding-top: 10%;">
 			<img src="http://10.12.21.57:3000/img/stepper_last_desc.png" alt="" style="width: 90%;">
 		</div>
 		<div style="background-color: #ffffff; padding-bottom: 10%;"></div>
