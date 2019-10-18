@@ -219,7 +219,7 @@ function loadMyInfo() {
 
 			$("#curEventInfo").show();
 			startCountDown(participatingEvent.startDtm, '#timeCounter'); //getTime () ~ 24hours
-			setStepZeroBase(participatingEvent.startDtm);
+			// setStepZeroBase(participatingEvent.startDtm);
 
 		} else if (applicableStatus==('todayFinishded')) {
 			// setMainButton(false, '오늘 이벤트에 참여하셨습니다');

@@ -183,10 +183,10 @@ function getSuccessSteps(stpCnt) {
 }
 
 function updateGettingCouponArea(stpCnt) {
-  if (stpCnt < guagePoints[0].steps) {
-    $("#get-coupon-wrapper").hide();
-    return;
-  }
+  // if (stpCnt < guagePoints[0].steps) {
+  //   $("#get-coupon-wrapper").hide();
+  //   return;
+  // }
   $("#get-coupon-wrapper").show();
 
   var currentDate = new Date();
@@ -345,6 +345,7 @@ function updateCoupons() {
 
   // stpCnt 보여주기
   var stpCnt = getStpCnt();
+  console.log("stpCnt:", stpCnt);
   // $("#stepCountFirst").text(stpCnt);
 
   // var rounds = [1, 2];  // 차수
@@ -381,7 +382,7 @@ function updateCoupons() {
     }
 
     // stpCnt에 따라 자물쇠 or V 표시
-    if (stpCnt >= baseSteps) {
+    if (parseInt(stpCnt) >= baseSteps) {
       $(targetTag).find(".coupon-unlocked").show();
       $(targetTag).find(".coupon-locked").hide();
     } else {
