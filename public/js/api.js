@@ -49,8 +49,6 @@ function applyEvent() {
 			//alert('이벤트에 지원하였습니다');
 			//kickPedometerUpdaet(param.startDtm);
 			alert('이벤트에 지원하였습니다:injectIntoApp:param.startDtm:' + param.startDtm);
-			if(isIOS())
-			 	webkit.messageHandlers.injectIntoApp.postMessage(param);
 
 			refresh();
 		}
@@ -220,6 +218,7 @@ function loadMyInfo() {
 
 			$("#curEventInfo").show();
 			startCountDown(participatingEvent.startDtm, '#timeCounter'); //getTime () ~ 24hours
+			setStepStartDate(participatingEvent.startDtm);
 
 		} else if (applicableStatus==('todayFinishded')) {
 			// setMainButton(false, '오늘 이벤트에 참여하셨습니다');
@@ -264,3 +263,9 @@ function loadMyInfo() {
 		myEvents = myEventsSorted;
 	});
 }
+
+function setStepStartDate(date) {
+	console.log('setStepStartDate(' + date + ')');
+	if(isAndroid()) Pedometer.setStepStartDate(date);
+}
+
