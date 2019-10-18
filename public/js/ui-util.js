@@ -363,7 +363,8 @@ function updateCoupons() {
     var foundCoupon = issuedCoupons.find(function (item) {
       return item.issueDtm.substr(0, 8) === startDate && item.cpnTyp === cpnTyp;
     });
-    // console.log("foundCoupon:", foundCoupon);
+    console.log("%cissuedCoupons: " + JSON.stringify(issuedCoupons), "color: darkyellow;");
+    console.log("%cfoundCoupon: " + JSON.stringify(foundCoupon), "color: darkyellow;");
 
     // 기존에 걸려 있던 click listener 해제
     $(targetTag).unbind("click");

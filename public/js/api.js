@@ -137,7 +137,8 @@ function couponStatus() {
 		allCoupons = res.result;
 		var cnt = parseInt($("#got-all-coupons-count").val()) + 1;
 		$("#got-all-coupons-count").val(cnt);
-	});	
+		updateCoupons();
+	});
 }
 
 function finalizeSteps() {
@@ -181,7 +182,8 @@ function loadMyInfo() {
 		// updateCoupons(res.issuedCoupons);
 
 		issuedCoupons = res.issuedCoupons;
-	});	 	
+		updateCoupons();
+	});
 	
 	API('/pedometer/my-event', 'get', {
 		"mbrNo":gMbrNo,
