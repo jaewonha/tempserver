@@ -209,10 +209,7 @@ function loadMyInfo() {
 
 			$("#curEventInfo").show();
 			startCountDown(participatingEvent.startDtm, '#timeCounter'); //getTime () ~ 24hours
-
-			$("#button-start").show();
-			$("#button-ing").hide();
-			$("#button-done").hide();
+			setStepStartDate(participatingEvent.startDtm);
 
 		} else if (applicableStatus==('todayFinishded')) {
 			// setMainButton(false, '오늘 이벤트에 참여하셨습니다');
@@ -257,3 +254,9 @@ function loadMyInfo() {
 		myEvents = myEventsSorted;
 	});
 }
+
+function setStepStartDate(date) {
+	console.log('setStepStartDate(' + date + ')');
+	if(isAndroid()) Pedometer.setStepStartDate(date);
+}
+
