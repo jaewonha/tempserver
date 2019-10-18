@@ -75,8 +75,8 @@ function renderMobileOrPC() {
 		$('#agent').text('mobile');
 		$("#for-debug-area").hide();
 
-		$("#header-top").removeClass("header-top-pc");
-		$("#header-top").addClass("header-top-mobile");
+		// $("#header-top").removeClass("header-top-pc");
+		// $("#header-top").addClass("header-top-mobile");
 		$("#main-intro").removeClass("main-intro-pc");
 		$("#main-intro").addClass("main-intro-mobile");
 		$("#event-1-body").removeClass("event-1-body-pc");
@@ -102,8 +102,8 @@ function renderMobileOrPC() {
 		$("#stepper").show();
 		$("#for-debug-area").show();
 
-		$("#header-top").removeClass("header-top-mobile");
-		$("#header-top").addClass("header-top-pc");
+		// $("#header-top").removeClass("header-top-mobile");
+		// $("#header-top").addClass("header-top-pc");
 		$("#main-intro").removeClass("main-intro-mobile");
 		$("#main-intro").addClass("main-intro-pc");
 		$("#event-1-body").removeClass("event-1-body-mobile");
@@ -139,6 +139,7 @@ $(document).ready(function(){
 	});
 
 	console.log('document.ready()');
+	// console.log(isMobile())
 	if(!isMobile()) _initialize();
 });
 
