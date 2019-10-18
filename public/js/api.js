@@ -156,6 +156,7 @@ function finalizeSteps() {
 			alert('[failed]' + res.result)
 		} else {
 			alert('만보기 이벤트 참여 끝:' + resStr);
+			if(isAndroid()) Pedometer.clearStepZeroBase();
 			refresh(); 
 		}
 	});	 	
@@ -218,7 +219,7 @@ function loadMyInfo() {
 
 			$("#curEventInfo").show();
 			startCountDown(participatingEvent.startDtm, '#timeCounter'); //getTime () ~ 24hours
-			setStepStartDate(participatingEvent.startDtm);
+			setStepZeroBase(participatingEvent.startDtm);
 
 		} else if (applicableStatus==('todayFinishded')) {
 			// setMainButton(false, '오늘 이벤트에 참여하셨습니다');
@@ -264,8 +265,8 @@ function loadMyInfo() {
 	});
 }
 
-function setStepStartDate(date) {
-	console.log('setStepStartDate(' + date + ')');
-	if(isAndroid()) Pedometer.setStepStartDate(date);
+function setStepZeroBase() {
+	console.log('setStepZeroBase()');
+	if(isAndroid()) Pedometer.setStepZeroBase();
 }
 

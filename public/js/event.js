@@ -165,7 +165,7 @@ function _initialize() {
   //2.
 	console.log('onLoad:', typeof window.Pedometer !== undefined);
 	if(isAndroid()) {
-		if(Pedometer.isLogin()) {
+		if(Pedometer.isLogin()) { //user logged in
 			var userInfo = Pedometer.getUserInfo();
 			console.log('userInfo:', userInfo);
 			var arr = userInfo.split(',');
