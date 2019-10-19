@@ -144,11 +144,11 @@ $(document).ready(function(){
 });
 
 function webviewLoadFinished() {
+	console.log('webviewLoadFinished()');
 	if(isAndroid()) {
-		console.log('webviewLoadFinished()');
 		console.log('>>', Pedometer.isLogin(), Pedometer.getUserInfo());
-		_initialize();
 	}
+	_initialize();
 }
 
 function _initialize() {
