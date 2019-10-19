@@ -120,10 +120,10 @@ $(document).ready(function(){
 	if(!isMobile()) _initialize();
 });
 
-function webviewLoadFinished() {
+function webviewLoadFinished() { //exact end of the webview load finished..
 	if(isAndroid()) {
 		console.log('webviewLoadFinished()');
-		console.log('>>', Pedometer.isLogin(), Pedometer.getUserInfo());
+		console.log('>>', Pedometer.isLogin(), Pedometer.getUserInfo()); //Pedometer == Webkit...
 		_initialize();
 	}
 }
