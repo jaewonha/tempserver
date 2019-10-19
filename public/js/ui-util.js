@@ -57,16 +57,21 @@ function startCountDown(rgstDtm, id) {
 	var startDate  = parseDtmStrtoDate(rgstDtm);
 	var dayEndDate = parseDtmStrtoDate(getToday());
 	dayEndDate.setHours(23,59,59,999);
-	//_startCountDown(dayEndDate, startDate, id);
+	_startCountDown(dayEndDate, startDate, id);
 }
 
+var gTimer = null;
+
 function _startCountDown(endDate, startDate, id) {
-  console.log(endDate, startDate)
+  if (gTimer != null) {
+    clearInterval(gTimer);
+  }
+  // console.log(endDate, startDate)
   // Update the count down every 1 second
   var date = startDate;
-  var timer = setInterval(function () {
+  gTimer = setInterval(function () {
     var distance = endDate - date;
-    console.log("distance:", distance)
+    // console.log("distance:", distance)
 
     // Time calculations for days, hours, minutes and seconds
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -97,7 +102,7 @@ function _startCountDown(endDate, startDate, id) {
 
     // If the count down is over, write some text 
     if (distance < 0) {
-      clearInterval(timer);
+      clearInterval(gTimer);
       // $(id).text('EXPIRED');
       $("#hour10").text(0);
       $("#hour1").text(0);
@@ -108,7 +113,7 @@ function _startCountDown(endDate, startDate, id) {
     }
     date.setSeconds(date.getSeconds() + 1);
   }, 1000);
-  return timer;
+  return gTimer;
 }
 
 function updateStepsUI(steps) {
@@ -178,15 +183,15 @@ function getSuccessSteps(stpCnt) {
 }
 
 function updateGettingCouponArea(stpCnt) {
-  if (stpCnt < guagePoints[0].steps) {
-    $("#get-coupon-wrapper").hide();
-    return;
-  }
+  // if (stpCnt < guagePoints[0].steps) {
+  //   $("#get-coupon-wrapper").hide();
+  //   return;
+  // }
   $("#get-coupon-wrapper").show();
 
   var currentDate = new Date();
   var lastTimeOfToday = lastTimeOfTheDay(currentDate);
-  _startCountDown(new Date(), lastTimeOfToday, "id");
+  // _startCountDown(new Date(), lastTimeOfToday, "id");
 
   var successSteps = getSuccessSteps(stpCnt);
   // $("#successCount").text(successSteps);
@@ -260,12 +265,6 @@ function updateSteps() {
   _startCountDown(new Date("2019-10-01 01:01:05"), new Date("2019-10-01 00:00:00"), "id");
 }
 
-function renderCouponsOfModal() {
-  // 무슨 쿠폰 받았는지 그린다.
-  // 내가 무슨 쿠폰 받았는지 알아야 한다.
-  // 현재 걸음 수, 쿠폰 받을 수 있는지 여부,
-}
-
 
 function stampAsClosed(targetTag, toShow) {
   if (toShow) {
@@ -275,6 +274,13 @@ function stampAsClosed(targetTag, toShow) {
     $(targetTag).find(".closed-coupon-bg").hide();
     $(targetTag).find(".closed-coupon-stamp").hide();
   }
+}
+
+function reqCoupon(steps, cpnTyp) {
+  return function () {
+    requestCoupon(steps, cpnTyp);
+    console.log("requestCoupon: after: ", steps, cpnTyp);
+  };
 }
 
 function updateCoupons() {
@@ -339,6 +345,7 @@ function updateCoupons() {
 
   // stpCnt 보여주기
   var stpCnt = getStpCnt();
+  console.log("stpCnt:", stpCnt);
   // $("#stepCountFirst").text(stpCnt);
 
   // var rounds = [1, 2];  // 차수
@@ -357,7 +364,8 @@ function updateCoupons() {
     var foundCoupon = issuedCoupons.find(function (item) {
       return item.issueDtm.substr(0, 8) === startDate && item.cpnTyp === cpnTyp;
     });
-    // console.log("foundCoupon:", foundCoupon);
+    console.log("%cissuedCoupons: " + JSON.stringify(issuedCoupons), "color: darkyellow;");
+    console.log("%cfoundCoupon: " + JSON.stringify(foundCoupon), "color: darkyellow;");
 
     // 기존에 걸려 있던 click listener 해제
     $(targetTag).unbind("click");
@@ -369,14 +377,12 @@ function updateCoupons() {
     } else {
       $(targetTag).find(".coupon-yellow").show();
       $(targetTag).find(".coupon-grey").hide();
-      $(targetTag).on('click', function () {
-        requestCoupon(baseSteps, cpnTyp);
-        // console.log("requestCoupon: ", baseSteps, cpnTyp);
-      });
+      console.log("requestCoupon: before: ", j, baseSteps, cpnTyp);
+      $(targetTag).on('click', reqCoupon(baseSteps, cpnTyp));
     }
 
     // stpCnt에 따라 자물쇠 or V 표시
-    if (stpCnt >= baseSteps) {
+    if (parseInt(stpCnt) >= baseSteps) {
       $(targetTag).find(".coupon-unlocked").show();
       $(targetTag).find(".coupon-locked").hide();
     } else {
@@ -411,7 +417,7 @@ function updateCoupons() {
 }
 
 function displayJsonTable(id, colNames, obj) {
-	return 0;
+	// return 0;
 	var text = '';
 	for(var i=-1;i<obj.length;i++)
     {

@@ -12,4 +12,7 @@ module.exports = function(app)
      app.get('/test',function(req,res){
         res.render('test.html');
     });
+    app.get('/native-test',function(req,res){
+      res.render('native-test.html');
+    });
 }

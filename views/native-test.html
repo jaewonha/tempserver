@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <title>Native Test</title>
+    <script type="text/javascript" src="http://169.254.90.46:3000/js/MobileNativeCallBridge.js"></script>
+    <script type="text/javascript" src="http://169.254.90.46:3000/js/ui-util.js"></script>
+	<script>
+    function setResult(result) {
+        document.getElementById("result").innerHTML = "Result: " + JSON.stringify(result)
+    }
+    function isLogin() {
+        NativeCall('isLogin', {})
+		.then(isLogin => {
+            console.log(isLogin);
+            setResult(isLogin)
+		})
+		.catch(err => {
+			console.log(err)
+		})
+    }
+    function getEntNo() {
+        NativeCall('getEntNo', {})
+		.then(getEntNo => {
+            console.log(getEntNo);
+            setResult(getEntNo)
+		})
+		.catch(err => {
+			console.log(err)
+		})
+    }
+	function getUserInfo() {
+        NativeCall('getUserInfo', {})
+		.then(getUserInfo => {
+            console.log(getUserInfo);
+            setResult(getUserInfo)
+		})
+		.catch(err => {
+			console.log(err)
+		})
+    }
+    function getPedometerSteps() {
+        NativeCall('getPedometerSteps', {})
+		.then(getPedometerSteps => {
+            console.log(getPedometerSteps);
+            setResult(getPedometerSteps)
+		})
+		.catch(err => {
+			console.log(err)
+		})
+    }
+    function issueCoupon() {
+        NativeCall('issueCoupon', "90900000001986950842")
+		.then(issueCoupon => {
+            console.log(issueCoupon);
+            setResult(issueCoupon)
+		})
+		.catch(err => {
+			console.log(err)
+		})
+    }
+    function setApplyEventResult(result, applicableStatus) {
+        document.getElementById("result").innerHTML = "Result: " + result + applicableStatus
+    }
+    </script>
+  </head>
+  <body>
+    <div style="font-size: 50px;">Native Test</div>
+    <br/>
+    <input type="button" value="isLogin" onclick="isLogin();" style="font-size: 70px; margin-bottom: 70px;" />
+    <br/>
+    <input type="button" value="getEntNo" onclick="getEntNo();" style="font-size: 70px; margin-bottom: 70px;" />
+    <br/>
+    <input type="button" value="getUserInfo" onclick="getUserInfo();" style="font-size: 70px; margin-bottom: 70px;" />
+    <br/>
+    <input type="button" value="getPedometerSteps" onclick="getPedometerSteps();" style="font-size: 70px; margin-bottom: 70px;" />
+    <br/>
+    <input type="button" value="issueCoupon" onclick="issueCoupon();" style="font-size: 70px; margin-bottom: 70px;" />
+    <br/>
+    <a href="toapp:::AppFunction:::Pedometer">
+        <button style="font-size: 70px;">toapp:::AppFunction:::Pedometer</button>
+    </a>
+    <div id="result" style="font-size: 50px;">Native Test</div>
+  </body>
+</html>

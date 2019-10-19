@@ -1,0 +1,87 @@
+<img id="topThumbnail" src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/main-top.jpg"><br>
+	<span id="curDate"></span><br>
+	<a href="http://10.12.21.58:8080/test/pedometer-event?addDay=-2" />-2Day</a>
+	<a href="http://10.12.21.58:8080/test/pedometer-event?addDay=-1" />-1Day</a>
+	<a href="http://10.12.21.58:8080/test/pedometer-event" />Today</a>
+	<a href="http://10.12.21.58:8080/test/pedometer-event?addDay=1" />+1Day</a>
+	<a href="http://10.12.21.58:8080/test/pedometer-event?addDay=2" />+2Day</a>
+	<hr>
+
+	<div>
+		<div> <span id="attendCount"></span> 회 참여 하셨습니다. </div>
+		<div> <span id="userName"></span> 고객님 걷기 이벤트에 참여하세요! </div>
+		<hr>
+	</div>
+	
+	<div>
+		<h4> 진행중 이벤트 </h4>
+		<div id="curEventInfo">
+			<h5> <span id="stepCount">0</span>걸음 </h5>
+			<h5> <span id="guage"></span>% </h5>
+			<h5> <span id="timeCounter">[타이머]</span> </h5>
+		</div>
+		
+		<a href="toapp:::AppFunction:::Pedometer" class="btn btn-primary" id="btnApply-mobile">이벤트 참여하기(Mobile)</a>
+		<button class="btn btn-primary event-button" id="btnApply-pc" onClick="applyEvent()">이벤트 참여하기(PC)</button>
+		<br>
+		
+		<button class="btn btn-danger event-button" id="btnRequestCoupon" onClick="scrollTo('getCoupons')">쿠폰 받기</button>
+		<br>
+		<button class="btn btn-success event-button" id="btnCouponStatus" onClick="scrollTo('couponStatus')">쿠폰 현황 확인</button>
+		<br>
+		<br>
+	</div>
+
+	
+	<div id="eventImgs">
+		<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/event1.jpg"><br>
+		<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/event2.jpg"><br>
+		<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/event3.jpg"><br> 
+	</div>
+	<hr>
+	
+	<div id="couponStatusAndRequest">
+		<img src="http://ec2-3-112-230-48.ap-northeast-1.compute.amazonaws.com:3000/img/coupon-top.jpg"><br>
+			
+		<br><h4> All Coupons </h4>	<div id="couponStatus"></div>
+		<br><h4 id="getCoupons"> Get Coupons </h4>
+		<button class="btn btn-outline-dark btn-sm" id="btnStep0" onClick="requestCoupon(0, 'participant')">participating</button>
+		<button class="btn btn-outline-dark btn-sm" id="btnStep4000" onClick="requestCoupon(4000, 'discount4000')">discount4000</button>
+		<button class="btn btn-outline-dark btn-sm" id="btnStep10000" onClick="requestCoupon(10000, 'discount10000')">discount10000</button>
+		<button class="btn btn-outline-dark btn-sm" id="btnStep15000" onClick="requestCoupon(15000, 'coffee')">coffee</button>
+		<button class="btn btn-outline-dark btn-sm" id="btnStep40000" onClick="requestCoupon(40000, 'discount40000')">discount4000</button>
+		<button class="btn btn-outline-dark btn-sm" id="btnFinalStep" onClick="finalizeSteps()">Finalize Step</button>
+		<br><br><h4> My Coupons </h4>	<div id="myCoupons"></div>
+	</div>
+	<hr>
+	
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	
+	
+	<!-- <h3> Development </h3> -->
+
+	<h4> My Events </h4>		<div id="history"></div>
+		
+	<hr>
+	
+	<h4> User Info </h4>
+	<span id="userMbrNo"></span><br>
+	<span id="userEntId"></span><br>
+	<span id="userStrId"></span><br>
+	
+		
+	<h4> Clear User Info </h4>
+		<button class="btn btn-outline-dark btn-sm" id="btnClearMyEvent" onClick="clearMyEvent()">clearMyEvent</button>
+		<button class="btn btn-outline-dark btn-sm" id="btnClearCouponMapped" onClick="clearMyCoupon()">btnClearCouponMapped</button>
+		<br>
+	
+	<h3> Event Status </h3>	
+		<div id="eventStatus"></div>
+		<br>
+		
