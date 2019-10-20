@@ -1,14 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<meta name="viewport" content="width=device-width,initial-scale=0.4"/>
+
 <html>
   <head>
     <title>Native Test</title>
-    <script type="text/javascript" src="http://169.254.90.46:3000/js/MobileNativeCallBridge.js"></script>
-    <script type="text/javascript" src="http://169.254.90.46:3000/js/ui-util.js"></script>
+    <script type="text/javascript" src="/resources/mow/js/MobileNativeCallBridge.js"></script>
+    <script type="text/javascript" src="/resources/mow/js/ui-util.js"></script>
 	<script>
     function setResult(result) {
         document.getElementById("result").innerHTML = "Result: " + JSON.stringify(result)
     }
     function isLogin() {
-        NativeCall('isLogin', {})
+        NativeCall('isLogin')
 		.then(isLogin => {
             console.log(isLogin);
             setResult(isLogin)
@@ -18,7 +21,7 @@
 		})
     }
     function getEntNo() {
-        NativeCall('getEntNo', {})
+        NativeCall('getEntNo')
 		.then(getEntNo => {
             console.log(getEntNo);
             setResult(getEntNo)
@@ -28,7 +31,7 @@
 		})
     }
 	function getUserInfo() {
-        NativeCall('getUserInfo', {})
+        NativeCall('getUserInfo')
 		.then(getUserInfo => {
             console.log(getUserInfo);
             setResult(getUserInfo)
@@ -38,7 +41,7 @@
 		})
     }
     function getPedometerSteps() {
-        NativeCall('getPedometerSteps', {})
+        NativeCall('getPedometerSteps', '1234abcd')
 		.then(getPedometerSteps => {
             console.log(getPedometerSteps);
             setResult(getPedometerSteps)
@@ -54,6 +57,7 @@
             setResult(issueCoupon)
 		})
 		.catch(err => {
+			setResult('fail, maybe not logged in?');
 			console.log(err)
 		})
     }
@@ -75,8 +79,11 @@
     <br/>
     <input type="button" value="issueCoupon" onclick="issueCoupon();" style="font-size: 70px; margin-bottom: 70px;" />
     <br/>
-    <a href="toapp:::AppFunction:::Pedometer">
-        <button style="font-size: 70px;">toapp:::AppFunction:::Pedometer</button>
+    <a href="toapp:::AppFunction:::Pedometer:::ApplyEvent">
+        <button style="font-size: 70px;">toapp:::AppFunction:::Pedometer:::ApplyEvent</button>
+    </a>
+    <a href="toapp:::AppFunction:::Pedometer:::Login">
+        <button style="font-size: 70px;">toapp:::AppFunction:::Pedometer:::Login</button>
     </a>
     <div id="result" style="font-size: 50px;">Native Test</div>
   </body>

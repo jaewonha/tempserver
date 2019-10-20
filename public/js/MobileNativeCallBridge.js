@@ -16,7 +16,7 @@ async function iosNativeCaller(msgName, param) {
 
 async function NativeCall(method, param) {
     if(isAndroid())  {
-        return window.Pedometer[method](param);
+        return (param!=null) ? Pedometer[method](param) : Pedometer[method]();
     } else if(isIOS()) {
         return await iosNativeCaller(method, param);
     } else {
